@@ -1,0 +1,34 @@
+{
+  "name": "aifinyo",
+  "version": "1.0.0",
+  "description": "Automation testing of aifinyo web application using cypress",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open --e2e ",
+    "cy:run:chrome": "cypress run --browser chrome  --headed",
+    "cy:run:edge": "cypress run --browser edge ",
+    "cy.run:electron": "cypress run --browser electron "
+  },
+  "keywords": [
+    "automation",
+    "cypress"
+  ],
+  "author": "Saurabh Verma",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^10.7.0",
+    "cypress-mochawesome-reporter": "^3.2.2",
+    "cypress-xpath": "^2.0.1",
+    "eslint": "8.10.0",
+    "eslint-plugin-mocha": "10.0.3",
+    "husky": "7.0.4",
+    "lint-staged": "12.3.5"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  },
+  "dependencies": {
+    "cypress-multi-reporters": "^1.6.4",
+    "cypress-qase-reporter": "^1.4.3"
+  }
+}
