@@ -1,14 +1,14 @@
-import { login } from "../../support/pages/LoginPage";
-import { commonitem } from "../../support/pages/CommonItemPage";
-import { client } from "../../support/pages/ClientPage";
-import { invoice } from "../../support/pages/InvoicePage";
+import { login } from "../../../support/pages/LoginPage";
+import { commonitem } from "../../../support/pages/CommonItemPage";
+import { client } from "../../../support/pages/ClientPage";
+import { invoice } from "../../../support/pages/InvoicePage";
 describe('Create Invoice Feature', function() {
 	
 
 	before(function() {
 		login.navigateToUrl('/app');
 		login.email('saurabh.verma@aifinyo.de');
-		login.password('Welcome@8');
+		login.password('welcome123');
 		login.clickloginBtn();
 		//cy.closeCookies();
 

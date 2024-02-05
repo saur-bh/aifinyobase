@@ -22,7 +22,7 @@ module.exports = defineConfig({
 				await afterRunHook();
 			});
 		},
-		baseUrl:'https://dresden.billodev.net',
+		baseUrl:'https://k20270727.billomat.net',
 
 	},
 });
