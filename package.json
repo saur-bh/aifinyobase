@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cy:open": "cypress open --e2e ",
-    "cy:run:chrome": "cypress run --browser chrome  --headed",
+    "cy:run": "cypress run",
     "cy:run:edge": "cypress run --browser edge ",
     "cy.run:electron": "cypress run --browser electron "
   },
