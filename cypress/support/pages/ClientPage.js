@@ -15,7 +15,7 @@ class ClientPage extends BasePage {
 */
 searchviaClientNumberandClick(value){
 	cy.get('#clientNumber').type(value ,{ delay: 1000});
-    cy.get('tbody > .table--row', {timeout:10000}).click();
+    cy.get('.paginated-table.paginated-clients td').first().should('have.text',value).click();
 };
 
 /**

@@ -14,7 +14,8 @@ class InvoicePage extends BasePage {
 */
 
 description(text){
-    cy.get('[name="document-label"]').type(text,{delay:100});
+    cy.get('#document-name',{timeout: 10000}).should('be.visible')
+    cy.get('#document-label').scrollIntoView().should('be.visible').type(text,{delay:100});
 };
 
 clickSave(){
@@ -53,7 +54,7 @@ verifyStatus(status){
 */
 
 clickactionItem(action){
-
+    cy.get('.sidebar-box.confirmation--box',{timeout:30000}).should("be.visible")
     switch (action) {
         case 'Abschließen':
             cy.contains(action).click();

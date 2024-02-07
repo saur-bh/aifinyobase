@@ -1,0 +1,33 @@
+{   
+    "login" : 
+    {
+    "URL": "k20270727",
+    "email": "saurabh.verma@aifinyo.de",
+    "password": "welcome123"
+    },
+    
+    "client" : {
+
+      "clientNumber" :"1",
+      "company" : " ",
+      "email" : "compay" ,
+      "firtname" : "SomeName",
+      "lastname" : "some name"
+
+
+    },
+
+    "invoice" : {
+
+       "description" : "This is test Invoice"
+
+    }
+    
+
+
+   
+    
+
+    
+  }
+  

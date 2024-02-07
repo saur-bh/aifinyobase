@@ -2,38 +2,46 @@ import { login } from "../../../support/pages/LoginPage";
 import { commonitem } from "../../../support/pages/CommonItemPage";
 import { client } from "../../../support/pages/ClientPage";
 import { invoice } from "../../../support/pages/InvoicePage";
-describe('Create Invoice Feature', function() {
+describe('Framework Test Suite', () => {
 	
+	let gd;
 
-	before(function() {
-		login.navigateToUrl('/app');
-		login.email('saurabh.verma@aifinyo.de');
-		login.password('welcome123');
-		login.clickloginBtn();
-		//cy.closeCookies();
+  before('Add all data to be used while testing', () => {
+    cy.fixture("billomat-frontend-prod-data/prod-data").then((data) => {
+      gd = data;
+    });
 
 	});
 	
-	it(`Should able to create new invoice with existing client`, function() {
+	it(`Should able to create new invoice with existing client`, () => {
 		
-
+    login.logInfo(gd)
+		login.navigateToUrl('/app');
+		login.email(gd.login.email);
+		login.password(gd.login.password);
+		login.clickloginBtn();
 
 			commonitem.selectmenuitem('invoices');
 			
 			commonitem.clickshortcutItem('Neue Rechnung');
 
-			client.searchviaClientNumberandClick('TEST123');
+			client.searchviaClientNumberandClick(gd.client.clientNumber);
 			
-			invoice.description('This is test invoice');
+			invoice.description(gd.invoice.description);
 			invoice.clickSave();
 			invoice.verifyStatus('Entwurf');
 			invoice.clickactionItem('Abschließen');
 			invoice.clickactionItem('Zustimmen');
 			invoice.verifyStatus('Bezahlt');
 
-			
+	
+	})
+	
+	after('logout',()=>{
+
+		login.navigateToUrl('/app/auth/logout')
 
 	})
 	
-	
 });
+
