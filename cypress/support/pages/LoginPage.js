@@ -1,4 +1,4 @@
-import BasePage from "./basePage";
+import BasePage from "./BasePage";
 /**
  * Class representing a Login.
  * @extends BasePage
