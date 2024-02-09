@@ -1,0 +1,6 @@
+{
+    "txtBoxEmail" : "#emailField" ,
+    "txtBoxPassword" : "[type='password']",
+    "btnLogin" : "#loginFormButton > span"
+
+}

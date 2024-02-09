@@ -1,10 +1,16 @@
 import BasePage from "./BasePage";
+const locator = require("../locators/billomat-frontend/loginPage");
 /**
  * Class representing a Login.
  * @extends BasePage
  */
 
+
 class LoginPage extends BasePage {
+
+  
+ 
+
 /**
  * Function to  type in the email field of login page.
  * @property {String} text Text which needs to be entered.
@@ -12,7 +18,7 @@ class LoginPage extends BasePage {
  * Login.email('automation@example.com');
 */
 email(text){
-	cy.get('#emailField').type(text);
+	cy.get(locator.txtBoxEmail).type(text);
 };
 
 /**
@@ -22,7 +28,7 @@ email(text){
  * Login.password('Welcome@8');
 */
 password(text){
-	cy.get('[type="password"]').type(text);
+	cy.get(locator.txtBoxPassword).type(text);
 };
 
 
@@ -32,7 +38,7 @@ password(text){
  * Login.clickloginBtn();
 */
 	clickloginBtn(){
-		cy.get('#loginFormButton > span').click();
+		cy.get(locator.btnLogin).click();
 		
 	};
 	
