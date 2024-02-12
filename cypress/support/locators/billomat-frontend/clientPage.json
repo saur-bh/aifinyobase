@@ -1,0 +1,5 @@
+{
+    "clientnumber" :"#clientNumber",
+    "tabledata" :".paginated-table.paginated-clients td",
+    "description" : "[name='document-label']"
+}

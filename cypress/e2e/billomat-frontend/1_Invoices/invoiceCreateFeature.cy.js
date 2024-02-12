@@ -10,6 +10,7 @@ describe('Framework Test Suite', () => {
     cy.fixture("billomat-frontend-prod-data/prod-data").then((data) => {
       gd = data;
     });
+	
 
 	});
 	
@@ -17,18 +18,19 @@ describe('Framework Test Suite', () => {
 		
     login.logInfo(gd)
 		login.navigateToUrl('/app');
+		
 		login.email(gd.login.email);
 		login.password(gd.login.password);
 		login.clickloginBtn();
 
+		
 			commonitem.selectmenuitem('invoices');
-			
 			commonitem.clickshortcutItem('Neue Rechnung');
 
 			client.searchviaClientNumberandClick(gd.client.clientNumber);
 			
 			invoice.description(gd.invoice.description);
-			invoice.clickSave();
+			invoice.clickactionbutton("Speichern");
 			invoice.verifyStatus('Entwurf');
 			invoice.clickactionItem('Abschließen');
 			invoice.clickactionItem('Zustimmen');

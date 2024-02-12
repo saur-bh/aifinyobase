@@ -31,15 +31,15 @@ selectmenuitem(item){
 clickshortcutItem(shortcutItem){
 
 	switch (shortcutItem) {
-
-		case 'Neue Rechnung'||'New Invoice':
-			cy.contains('Neue Rechnung').click();
-			break;
-		case 'Neue Abo-Rechnung'||'Recurring Invoices':
-				cy.contains('Neue Rechnung').click();
-				
-				break;
 	
+		case 'Neue Rechnung':
+		case 'New Invoice' :
+				cy.get(".invoices").find("button").first().click();
+				break;
+		case 'Neue Abo-Rechnung':
+		case 'Recurring Invoices':
+				cy.contains('.recurrings').find("button").first().click();
+				break;
 		default:
 			break;
 	}

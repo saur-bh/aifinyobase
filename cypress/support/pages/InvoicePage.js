@@ -1,4 +1,5 @@
 import BasePage from "./BasePage";
+const locator = require("../locators/billomat-frontend/invoicePage");
 
 /**
  * Class representing a Invoices.
@@ -18,9 +19,15 @@ description(text){
     cy.get('#document-label').scrollIntoView().should('be.visible').type(text,{delay:100});
 };
 
-clickSave(){
+clickactionbutton(item){
 
-    cy.contains('Speichern'||'Save').click();
+    if("Abbrechen" || "Cancel"){
+        cy.contains(item).click();
+    }
+    if("Save"||"Speichern"){
+        cy.get(item).click();
+    }
+    
 };
 
 /**
@@ -31,17 +38,11 @@ clickSave(){
 */
 verifyStatus(status){
 
-    switch (status) {
-        case ('Draft'|| 'Entwurf'):
+ 
+        if ('Draft'|| 'Entwurf'){
             cy.get('.sidebar-box.state').find('p').should('contain.value', (status));
-            break;
-    
-        case ('Paid'|| 'Entwurf'):
-            break;
-    }
-    
-    
-
+        }
+                   
 
 
 };

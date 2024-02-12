@@ -1,4 +1,5 @@
 import BasePage from "./BasePage";
+const locator = require("../locators/billomat-frontend/clientPage");
 
 /**
  * Class representing a Clients.
@@ -14,8 +15,8 @@ class ClientPage extends BasePage {
  * client.clientNumber('TEST123');
 */
 searchviaClientNumberandClick(value){
-	cy.get('#clientNumber').type(value ,{ delay: 1000});
-    cy.get('.paginated-table.paginated-clients td').first().should('have.text',value).click();
+	cy.get(locator.clientnumber).type(value ,{ delay: 1000});
+    cy.get(locator.tabledata).first().should('have.text',value).click();
 };
 
 /**
@@ -26,7 +27,7 @@ searchviaClientNumberandClick(value){
 */
 
 description(text){
-    cy.get('[name="document-label"]').type(text,{delay:100});
+    cy.get(locator.description).type(text,{delay:100});
 };
 
 
