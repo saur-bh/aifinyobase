@@ -2,6 +2,7 @@ const { defineConfig } = require('cypress');
 const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/lib');
 
 module.exports = defineConfig({
+	projectId: "tmyvht",
 	reporter: 'cypress-mochawesome-reporter',
 	reporterOptions: {
 		// overwrite: false,
@@ -15,7 +16,6 @@ module.exports = defineConfig({
 		// ignoreVideos: true,
 		videoOnFailOnly: true
 	  },
-	  
 	defaultCommandTimeout : 100000,
 	retries: {
 		runMode: 1,
