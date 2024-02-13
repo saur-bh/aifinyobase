@@ -30,11 +30,11 @@ describe('Framework Test Suite', () => {
 			client.searchviaClientNumberandClick(gd.client.clientNumber);
 			
 			invoice.description(gd.invoice.description);
-			invoice.clickactionbutton("Speichern");
-			invoice.verifyStatus('Entwurf');
-			invoice.clickactionItem('Abschließen');
-			invoice.clickactionItem('Zustimmen');
-			invoice.verifyStatus('Bezahlt');
+			invoice.clickactionbutton('Save');
+			invoice.verifyStatus('Draft');
+			invoice.clickactionItem('Complete');
+			invoice.clickactionItem('Approve');
+			invoice.verifyStatus('Paid');
 
 	
 	})

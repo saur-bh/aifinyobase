@@ -24,8 +24,8 @@ clickactionbutton(item){
     if("Abbrechen" || "Cancel"){
         cy.contains(item).click();
     }
-    if("Save"||"Speichern"){
-        cy.get(item).click();
+    if("Save" | "Speichern"){
+        cy.contains(item).click();
     }
     
 };
@@ -39,9 +39,9 @@ clickactionbutton(item){
 verifyStatus(status){
 
  
-        if ('Draft'|| 'Entwurf'){
-            cy.get('.sidebar-box.state').find('p').should('contain.value', (status));
-        }
+       
+            cy.get('[class="sidebar-box state"',{timeout:10000}).find('p',{timeout:10000}).should('contain.text',(status));
+    
                    
 
 
@@ -58,11 +58,17 @@ clickactionItem(action){
     cy.get('.sidebar-box.confirmation--box',{timeout:30000}).should("be.visible")
     switch (action) {
         case 'Abschließen':
+        case 'Complete':
             cy.contains(action).click();
             break;
         case 'Zustimmen' :
+        case 'Approve' :
             cy.contains(action).click();
             break;
+        case 'Cancel':
+            cy.contains(action).click();
+            break;
+
         
     
     }

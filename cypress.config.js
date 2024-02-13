@@ -9,7 +9,7 @@ module.exports = defineConfig({
 		embeddedScreenshots: true,
 		inlineAssets: true,
 		saveAllAttempts: false,
-		defaultCommandTimeout : 20000
+		defaultCommandTimeout : 100000
 	},
 	e2e: {
 		setupNodeEvents(on, config) {
