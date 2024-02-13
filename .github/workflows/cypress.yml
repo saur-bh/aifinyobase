@@ -41,5 +41,3 @@ jobs:
 
       - name: Run Cypress Tests
         run: npm run cy:run  # Change this command to match your Cypress test script
-      - name: Report
-        run: https://cloud.cypress.io/projects/tmyvht
