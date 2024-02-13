@@ -4,12 +4,18 @@ const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/li
 module.exports = defineConfig({
 	reporter: 'cypress-mochawesome-reporter',
 	reporterOptions: {
+		// overwrite: false,
+		reportFilename: "[status]_[datetime]-report",
+		// timestamp: "longDate",
 		charts: true,
-		reportPageTitle: 'Automation Test Resport for Aifinyo.',
+		reportPageTitle: 'Automation Report -Aifinyo Regression',
 		embeddedScreenshots: true,
 		inlineAssets: true,
-		saveAllAttempts: false,	
-	},
+		saveAllAttempts: true,
+		// ignoreVideos: true,
+		videoOnFailOnly: true
+	  },
+	  
 	defaultCommandTimeout : 100000,
 	retries: {
 		runMode: 1,
