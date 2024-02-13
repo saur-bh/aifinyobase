@@ -35,7 +35,7 @@ describe('Framework Test Suite', () => {
 			invoice.clickactionItem('Complete');
 			invoice.clickactionItem('Approve');
 			invoice.verifyStatus('Paid');
-
+				// comment
 	
 	})
 	
