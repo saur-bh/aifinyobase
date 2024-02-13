@@ -9,8 +9,13 @@ module.exports = defineConfig({
 		embeddedScreenshots: true,
 		inlineAssets: true,
 		saveAllAttempts: false,
-		defaultCommandTimeout : 100000
+		defaultCommandTimeout : 100000,
+		
 	},
+	retries: {
+		runMode: 1,
+		openMode: 1,
+		},
 	e2e: {
 		setupNodeEvents(on, config) {
 			on('before:run', async details => {
