@@ -40,7 +40,7 @@ verifyStatus(status){
 
  
        
-            cy.get('[class="sidebar-box state"',{timeout:10000}).find('p',{timeout:10000}).should('contain.text',(status));
+            cy.get('.sidebar-box.state',{timeout:10000}).find('p',{timeout:10000}).should('contain.text',(status));
     
                    
 
