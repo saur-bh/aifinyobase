@@ -13,3 +13,6 @@
           env:
             APP_ID: k20270727
             APP_SYS: billomat 
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+              record: true
