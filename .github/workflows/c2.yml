@@ -1,20 +1,20 @@
 name: End to End test for Aifinyo Web-Application
 on:
-  push:
-    branches:
-      - main
   pull_request:
-    types:
-      - closed
     branches:
       - main
+
 jobs:
   cypress-run:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-
+        uses: actions/checkout@v2
+      - name: Check for merge conflicts
+        run: |
+          git fetch origin main
+          ! git diff --check $(git merge-base main HEAD)
+        continue-on-error: true
       - name: Cypress run with env
         uses: cypress-io/github-action@v6
         env:
