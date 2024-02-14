@@ -16,8 +16,14 @@ module.exports = defineConfig({
 		// ignoreVideos: true,
 		videoOnFailOnly: true
 	  },
+	env: {
+		billomatID : "k20270727",
+		username : "saurabh.verma@aifinyo.de",
+		password: "welcome123",
+		system: "billomat"
+	},
 	defaultCommandTimeout : 100000,
-	retries: {
+	retries:{
 		runMode: 1,
 		openMode: 1,
 		},

@@ -7,6 +7,7 @@ describe('Framework Test Suite', () => {
 	let gd;
 
   before('Add all data to be used while testing', () => {
+	cy.loginToApp();
     cy.fixture("billomat-frontend-prod-data/prod-data").then((data) => {
       gd = data;
     });
@@ -16,14 +17,7 @@ describe('Framework Test Suite', () => {
 	
 	it(`Should able to create new invoice with existing client`, () => {
 		
-    login.logInfo(gd)
-		login.navigateToUrl('/app');
-		
-		login.email(gd.login.email);
-		login.password(gd.login.password);
-		login.clickloginBtn();
-
-		
+			
 			commonitem.selectmenuitem('invoices');
 			commonitem.clickshortcutItem('Neue Rechnung');
 
