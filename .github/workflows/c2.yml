@@ -10,5 +10,6 @@ jobs:
       - name: Cypress run with env
         uses: cypress-io/github-action@v6
         with:
-          env: APP_ID=k20270727,APP_SYS=billomat
+          APP_ID: k20270727
+          APP_SYS: billomat
           
