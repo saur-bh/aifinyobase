@@ -1,5 +1,5 @@
 
-  name: Cypress tests
+  name: End to End test for Aifinyo Web-Application
   on: push
   jobs:
     cypress-run:
