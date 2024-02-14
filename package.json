@@ -4,7 +4,8 @@
   "description": "Automation testing of aifinyo web application using cypress",
   "main": "index.js",
   "scripts": {
-    "cy:open": "cypress open --e2e ",
+    "cy:open": "cypress open --e2e",
+    "cy:process": "APP_ID='k20270727' APP_SYS='billomat' npm run cy:open ",
     "cy:run": "cypress run  --record --key b98fc760-d071-4200-b053-f33657086230",
     "cy:run:edge": "cypress run --browser edge ",
     "cy.run:electron": "cypress run --browser electron "

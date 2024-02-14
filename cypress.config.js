@@ -17,10 +17,9 @@ module.exports = defineConfig({
 		videoOnFailOnly: true
 	  },
 	env: {
-		billomatID : "k20270727",
 		username : "saurabh.verma@aifinyo.de",
 		password: "welcome123",
-		system: "billomat"
+
 	},
 	defaultCommandTimeout : 100000,
 	retries:{
@@ -38,8 +37,17 @@ module.exports = defineConfig({
 				console.log('override after:run');
 				await afterRunHook();
 			});
+		const billomatid = process.env.APP_ID
+      	const system = process.env.APP_SYS
+		if(billomatid && system != undefined){
+			config.baseUrl = `https://${billomatid}.${system}.net`
+			return config
+
+		}
+
+     
 		},
-		baseUrl:'https://k20270727.billomat.net',
+		baseUrl: "https://dresden.billodev.net/app/auth",
 
 	},
 });
