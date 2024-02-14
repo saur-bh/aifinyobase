@@ -13,6 +13,6 @@
           env:
             APP_ID: k20270727
             APP_SYS: billomat 
-            CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+            CYPRESS_RECORD_KEY: ${{secrets.CYPRESS_RECORD_KEY}}
           with:
               record: true
