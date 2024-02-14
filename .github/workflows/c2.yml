@@ -1,15 +1,15 @@
-name: Cypress tests
-on: push
-jobs:
-  cypress-run:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
 
-      - name: Cypress run with env
-        uses: cypress-io/github-action@v6
-        with:
-          APP_ID: k20270727
-          APP_SYS: billomat
-          
+  name: Cypress tests
+  on: push
+  jobs:
+    cypress-run:
+      runs-on: ubuntu-22.04
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+  
+        - name: Cypress run with env
+          uses: cypress-io/github-action@v6
+          env:
+            APP_ID: k20270727
+            APP_SYS: billomat 
