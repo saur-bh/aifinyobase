@@ -1,11 +1,13 @@
 name: End to End test for Aifinyo Web-Application
-on: 
+on:
   push:
     branches:
-      -main
+      - main
   pull_request:
+    types:
+      - closed
     branches:
-      -main
+      - main
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
