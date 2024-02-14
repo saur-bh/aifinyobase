@@ -23,9 +23,5 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Cypress.io
-        uses: cypress-io/github-action@v6.6.1
-
-
-                    
-            
+      - name: Run Cypress Tests
+        run: npm run cy:run  # Change this command to match your Cypress test script
