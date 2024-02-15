@@ -1,0 +1,6 @@
+{
+
+   "name" : "#user-input-city" ,
+
+   "tabledata" :".paginated-table.paginated-suppliers td"
+}

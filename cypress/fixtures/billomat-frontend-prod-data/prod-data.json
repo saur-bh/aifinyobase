@@ -27,6 +27,12 @@
 
           "upload" : "cypress/downloads/documentInbox/Finetrading.pdf"
 
+
+    },
+
+    "supplier" :{
+
+        "city" : "Dresden"
     }
     
 

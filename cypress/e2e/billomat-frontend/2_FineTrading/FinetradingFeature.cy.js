@@ -1,6 +1,8 @@
 import { login } from "../../../support/pages/LoginPage";
 import { commonitem } from "../../../support/pages/CommonItemPage";
 import { documentinbox } from "../../../support/pages/DocumentInboxPage";
+import {supplier} from "../../../support/pages/SuppliersPage";
+import {finetrading} from "../../../support/pages/FinetradinePage"
 describe('Framework Test Suite', () => {
 	
 	let gd;
@@ -13,8 +15,9 @@ describe('Framework Test Suite', () => {
 	
 
 	});
+
 	
-	it(`Should able to create new invoice with existing client`, () => {
+	it(`BF-13 : Should able to create new invoice with existing client`, () => {
 		
 			
 			commonitem.selectmenuitem('finance');
@@ -22,8 +25,32 @@ describe('Framework Test Suite', () => {
 			commonitem.clickshortcutItem('supplierinvoice');
 
             documentinbox.uploadFile(gd.finetrading.upload);
+
+			supplier.searchsupplierandClick(gd.supplier.city);
+
+			finetrading.verifyDocumentisloaded();
+			
           
-	})
+	});
+
+
+	it(`BF-31 : Should able to create new invoice with existing client`, () => {
+		
+			
+		commonitem.selectmenuitem('finance');
+
+		commonitem.clickshortcutItem('supplierinvoice');
+
+		documentinbox.uploadFile(gd.finetrading.upload);
+
+		supplier.searchsupplierandClick(gd.supplier.city);
+
+		finetrading.verifyDocumentisloaded();
+		
+	  
+});
+
+
 	
 	
 });
