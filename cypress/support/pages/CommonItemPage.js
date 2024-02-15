@@ -38,8 +38,13 @@ clickshortcutItem(shortcutItem){
 				break;
 		case 'Neue Abo-Rechnung':
 		case 'Recurring Invoices':
-				cy.contains('.recurrings').find("button").first().click();
+				cy.get('.recurrings').find("button").first().click();
 				break;
+		case 'Lieferantenrechnung':
+		case 'supplierinvoice':
+				cy.get('.finance').find("button").first().click();
+				break;
+				
 		default:
 			break;
 	}

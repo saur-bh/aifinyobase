@@ -21,6 +21,12 @@
 
        "description" : "This is test invoice I am working on"
 
+    },
+
+    "finetrading":{
+
+          "upload" : "cypress/downloads/documentInbox/Finetrading.pdf"
+
     }
     
 
