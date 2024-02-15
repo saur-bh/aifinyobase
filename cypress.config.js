@@ -21,7 +21,7 @@ module.exports = defineConfig({
 		password: "welcome123",
 
 	},
-	defaultCommandTimeout : 100000,
+	defaultCommandTimeout : 10000,
 	retries:{
 		runMode: 1,
 		openMode: 1,
