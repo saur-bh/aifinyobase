@@ -50,7 +50,11 @@ describe('Framework Test Suite', () => {
 	  
 });
 
+after('logout',()=>{
 
+	login.navigateToUrl('/app/auth/logout')
+
+})
 	
 	
 });

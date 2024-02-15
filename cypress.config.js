@@ -23,8 +23,8 @@ module.exports = defineConfig({
 	},
 	defaultCommandTimeout : 10000,
 	retries:{
-		runMode: 1,
-		openMode: 1,
+		runMode: 0,
+		openMode: 0,
 		},
 	e2e: {
 		setupNodeEvents(on, config) {
