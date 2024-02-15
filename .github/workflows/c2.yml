@@ -1,6 +1,6 @@
 name: End to End test for Aifinyo Web-Application
 on:
-  pull_request:
+  push:
     branches:
       - main
 
