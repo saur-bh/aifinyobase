@@ -41,3 +41,14 @@ Cypress.Commands.add('loginToApp', () => {
 		login.password(Cypress.env('password'));
 		login.clickloginBtn();
  })
+
+
+ Cypress.on("log:changed", (log, interactive) => {
+  if (log.displayName !== "fetch" && log.displayName !== "xhr") return
+
+  const logs = window.top.document.querySelectorAll("li.command-name-request");
+  if (logs.length) {
+    const last = [...logs][logs.length - 1];
+    last.remove();
+  }
+});
