@@ -6,7 +6,7 @@ describe('Framework Test Suite', () => {
 	
 	let gd;
 
-  before('Add all data to be used while testing', () => {
+  beforeEach('Add all data to be used while testing', () => {
 	cy.loginToApp();
     cy.fixture("billomat-frontend-prod-data/prod-data").then((data) => {
       gd = data;
@@ -33,7 +33,7 @@ describe('Framework Test Suite', () => {
 	
 	})
 	
-	after('logout',()=>{
+	afterEach('logout',()=>{
 
 		login.navigateToUrl('/app/auth/logout')
 
