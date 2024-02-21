@@ -25,8 +25,8 @@
 
     "finetrading":{
 
-          "upload1" : "cypress/downloads/documentInbox/Finetrading.pdf",
-          "upload2" : "cypress/downloads/documentInbox/SalesInvoice.pdf",
+          "upload1" : "/cypress/downloads/documentInbox/Finetrading.pdf",
+          "upload2" : "/cypress/downloads/documentInbox/SalesInvoice.pdf",
           "zipcode" : "01097"
           
 
