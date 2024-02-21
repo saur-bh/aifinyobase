@@ -28,19 +28,39 @@ verifyDocumentisloaded(){
  * finetrading.verifypurchasing();
 */
 verifypurchasing(){
+	var freepurchase, usedpurchanse, totalpurchase;
 	cy.get('iframe').then(($iframe) => {
 		// Switch to the iframe
 		$iframe.remove();
+		
+		cy.wait(1000)
 		cy.window().then((parentWindow) => {
-			cy.get(locator.purchaceboxvalue).each((arr,i) => {
+			
+			cy.get(locator.purchaceboxvalue).first().invoke('text').as('firstText');
+			cy.get(locator.purchaceboxvalue).eq(1).invoke('text').as('secondText');
+			cy.get(locator.purchaceboxvalue).last().invoke('text').as('lastText');
 
-				//let freePurchase = parseFloat(arr.text().split(' ')[0]);
-				//let usedpurchase = parseFloat(arr.text().split(' ')[0]);
-				//let totalpurchase = parseFloat(arr.text().split(' ')[0]);
-				cy.log(arr.text());
-				cy.log(i)
-				//expect(freePurchase+usedpurchase).to.eq(totalpurchase)
+			
+			cy.get('@firstText').then((firstText) => {
+				cy.get('@secondText').then((secondText) => {
+					cy.get('@lastText').then((lastText) => {
+						// You have access to all three text values
+						cy.log(`First textzzzzzz: ${firstText}`);
+						cy.log(`Second text: ${secondText}`);
+						cy.log(`Last text: ${lastText}`);
+			
+						var freepurchase = parseFloat(firstText.split(" ")[0].replace(',',""))
+						var usedpurchase = parseFloat(secondText.split(" ")[0].replace(',',""))
+						var totalpurchase = parseFloat(lastText.split(" ")[0].replace(',',""))
+						//cy.log(lastText.split(" ")[0].replace(',',""));
+						expect(freepurchase+usedpurchase).to.be.eq(totalpurchase)
+					});
+				});
 			});
+
+
+
+
 		});
 	});
 	
