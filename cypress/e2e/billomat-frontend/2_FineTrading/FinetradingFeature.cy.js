@@ -54,6 +54,15 @@ describe('Framework Test Suite', () => {
 	  
 });
 
+
+it.only(`BF-25: Purchasing Frame`, () => {
+		
+			
+	commonitem.selectmenuitem('finance');
+	finetrading.verifypurchasing();
+  
+});
+
 afterEach('logout',()=>{
 
 	login.navigateToUrl('/app/auth/logout')

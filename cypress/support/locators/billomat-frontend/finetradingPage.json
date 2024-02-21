@@ -1,4 +1,5 @@
 {
 
-    "pageisDisplayed" : "h2.mb20"
+    "pageisDisplayed" : "h2.mb20",
+    "purchaceboxvalue" : ".purchase--box--value"
 }
