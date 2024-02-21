@@ -17,14 +17,18 @@ describe('Framework Test Suite', () => {
 	});
 
 	
-	it(`BF-13 : Should able to create new invoice with existing client`, () => {
+	it(`BF-13 :Submit for fine trading with existing supplier`, () => {
 		
 			
 			commonitem.selectmenuitem('finance');
 
 			commonitem.clickshortcutItem('supplierinvoice');
 
-            documentinbox.uploadFile(gd.finetrading.upload);
+            documentinbox.fileUpload(gd.finetrading.upload1);
+
+			documentinbox.selectDocumentTypeandClick(gd.docinbox.doctype , gd.docinbox.operation);
+
+
 
 			supplier.searchsupplierandClick(gd.supplier.city);
 
@@ -34,14 +38,14 @@ describe('Framework Test Suite', () => {
 	});
 
 
-	it(`BF-31 : Should able to create new invoice with existing client`, () => {
+	it(`BF-15:  Upload of Invoice from document Inbox`, () => {
 		
 			
-		commonitem.selectmenuitem('finance');
+		commonitem.selectmenuitem('inboxdocuments');
 
-		commonitem.clickshortcutItem('supplierinvoice');
+		documentinbox.uploadFile(gd.finetrading.upload2);
 
-		documentinbox.uploadFile(gd.finetrading.upload);
+		documentinbox.selectDocumentTypeandClick(gd.docinbox.doctype , gd.docinbox.operation);
 
 		supplier.searchsupplierandClick(gd.supplier.city);
 

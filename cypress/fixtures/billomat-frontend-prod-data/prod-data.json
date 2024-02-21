@@ -25,7 +25,10 @@
 
     "finetrading":{
 
-          "upload" : "cypress/downloads/documentInbox/Finetrading.pdf"
+          "upload1" : "cypress/downloads/documentInbox/Finetrading.pdf",
+          "upload2" : "cypress/downloads/documentInbox/SalesInvoice.pdf",
+          "zipcode" : "01097"
+          
 
 
     },
@@ -33,9 +36,14 @@
     "supplier" :{
 
         "city" : "Dresden"
-    }
+    } ,
     
+    "docinbox": {
 
+      "doctype" : "Finetrading Invoice",
+      "operation": "Apply for finetrading"
+
+    }
 
    
     

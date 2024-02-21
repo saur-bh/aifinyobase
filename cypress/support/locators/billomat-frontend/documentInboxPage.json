@@ -2,6 +2,9 @@
 
 {
     "fileupload" : "input[type='file']" ,
-    "zipcode" : "01097"
+    "uploadfile":"#inbox-native-file-input",
+   "container" : ".fe-select--container",
+   "option":".fe-select__option"
+   
 
 }
