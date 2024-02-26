@@ -67,6 +67,117 @@ verifypurchasing(){
 };
 
 
+/**
+ * Function to click on Finance now button 
+ * @property 
+ * @example
+ * finetrading.clickFinanceNow();
+*/
+clickbtnbasedonText(text){
+
+	cy.contains(text).click();
+};
+/**
+ * Function to  select the item from the document types dropdown. 
+ *  @property {String} txt "12/12/2023"
+ * @example
+ * finetrading.setInvoiceDate("26/02/2024");
+*/
+setInvoiceDate(date_text){
+
+	if(date_text == ""){
+
+		cy.get(locator.invoicedate).clear().tab();
+
+	}else{
+		cy.get(locator.invoicedate).clear().type(date_text);
+	}
+	
+};
+/**
+ * Function to  select the item from the document types dropdown. 
+ *  @property {String} txt "12/12/2023"
+ * @example
+ * finetrading.setDueDate("26/02/2024");
+*/
+setDueDate(date_text){
+	if(date_text===""){
+
+		cy.get(locator.duedate).clear().tab();
+
+	}else{
+		cy.get(locator.duedate).clear().type(date_text);
+	}
+	
+};
+
+/**
+ * Function to  select the item from the document types dropdown. 
+ *  @property {String} txt "12/12/2023"
+ * @example
+ * finetrading.setDileveryDate("26/02/2024");
+*/
+setDileveryDate(date_text){
+	if(date_text=""){
+
+		cy.get(locator.deliverydate).clear().tab();
+
+	}else{
+		cy.get(locator.deliverydate).clear().type(date_text);
+	}
+	
+};
+
+
+/**
+ * Function to  select the item from the document types dropdown. 
+ *  @property {String} txt "12/12/2023"
+ * @example
+ * finetrading.setInvoiceNumber("TEST_231050527");
+*/
+setInvoiceNumber(text){
+	if(text=""){
+
+		cy.get(locator.deliverydate).clear().tab();
+
+	}else{
+		cy.get(locator.deliverydate).clear().type(text);
+	}
+	
+};
+
+
+/**
+ * Function to  select the item from the document types dropdown. 
+ *  @property {String} txt "12/12/2023"
+ * @example
+ * finetrading.setInvoiceNumber("TEST_231050527");
+*/
+setdescription(text){
+	if(text=""){
+
+		cy.get(locator.deliverydate).clear().tab();
+
+	}else{
+		cy.get(locator.deliverydate).clear().type(text);
+	}
+	
+};
+
+
+
+/**
+ * Function to  select the item from the document types dropdown. 
+ *  @property {String} txt "12/12/2023"
+ * @example
+ * finetrading.setInvoiceNumber("TEST_231050527");
+*/
+verifyToastMessage(text){
+	cy.get(locator.errortoast,{timeout:10000}).find('span',{timeout:10000}).should('have.text',(text));
+	
+};
+
+
 }
 
 export const finetrading = new FinetradingPage();

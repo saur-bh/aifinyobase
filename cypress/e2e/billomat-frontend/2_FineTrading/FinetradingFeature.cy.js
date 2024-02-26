@@ -47,7 +47,10 @@ describe('Framework Test Suite', () => {
 
 		documentinbox.selectDocumentTypeandClick(gd.docinbox.doctype , gd.docinbox.operation);
 
-		supplier.searchsupplierandClick(gd.supplier.city);
+		
+		supplier.searchsupplierviaCompanyandClick(gd.supplier.city);
+		
+
 
 		finetrading.verifyDocumentisloaded();
 		
@@ -60,6 +63,41 @@ it(`BF-25: Purchasing Frame`, () => {
 			
 	commonitem.selectmenuitem('finance');
 	finetrading.verifypurchasing();
+  
+});
+
+
+it.only(`BF-31: Submit missing mandatory field`, () => {
+		
+			
+	commonitem.selectmenuitem('finance');
+
+			commonitem.clickshortcutItem('supplierinvoice');
+
+            documentinbox.fileUpload(gd.finetrading.upload1);
+
+			documentinbox.selectDocumentTypeandClick(gd.docinbox.doctype , gd.docinbox.operation);
+
+
+			supplier.typeZip(gd.supplier.zip);
+		supplier.typecompany(gd.supplier.company)
+			supplier.searchsupplierandClick(gd.supplier.city);
+
+			finetrading.verifyDocumentisloaded();
+			finetrading.setInvoiceDate("");
+			finetrading.clickbtnbasedonText("Finance now");
+			finetrading.verifyToastMessage(gd.finetrading.errorinvoicedate);
+			finetrading.setInvoiceDate("01/02/2024");
+			finetrading.setDueDate("");
+			finetrading.clickbtnbasedonText("Finance now");
+			finetrading.verifyToastMessage(gd.finetrading.errorduedate);
+			finetrading.setDueDate("20/02/2024");
+			finetrading.setInvoiceNumber("");
+			finetrading.setdescription("This is test description")
+			finetrading.clickbtnbasedonText("Finance now");
+			finetrading.verifyToastMessage(gd.finetrading.errorinvoicetoast);
+			finetrading.clickbtnbasedonText("Cancel");
+			
   
 });
 

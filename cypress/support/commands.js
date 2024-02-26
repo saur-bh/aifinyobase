@@ -52,3 +52,21 @@ Cypress.Commands.add('loginToApp', () => {
     last.remove();
   }
 });
+
+// cypress/support/commands.js
+
+Cypress.Commands.add('tab', { prevSubject: 'optional' }, (subject, options) => {
+  const tabEvent = new KeyboardEvent('keydown', {
+    key: 'Tab',
+    code: 'Tab',
+    which: 9,
+    bubbles: true,
+    composed: true,
+  });
+
+  if (subject) {
+    subject[0].dispatchEvent(tabEvent);
+  } else {
+    document.dispatchEvent(tabEvent);
+  }
+});

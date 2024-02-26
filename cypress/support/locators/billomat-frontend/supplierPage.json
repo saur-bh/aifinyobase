@@ -1,6 +1,7 @@
 {
 
-   "name" : "#user-input-city" ,
-
+   "city" : "#user-input-city" ,
+   "company": "#user-input-name",
+   "zip":"#user-input-zip",
    "tabledata" :".paginated-table.paginated-suppliers td"
 }

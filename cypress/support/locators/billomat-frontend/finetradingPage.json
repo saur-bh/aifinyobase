@@ -1,5 +1,14 @@
 {
 
     "pageisDisplayed" : "h2.mb20",
-    "purchaceboxvalue" : ".purchase--box--value"
+    "purchaceboxvalue" : ".purchase--box--value",
+    "invoicedate": ".gui-details-document-dates input",
+    "duedate":".gui-details-document-duedates  input",
+    "deliverydate" : ".gui-details-document-supplydate input",
+    "invoicenumber": ".gui-details-document-incomingnumber  input",
+    "description": ".gui-details-document-description input",
+    "price" : ".gui-details-document-price input",
+    "tax": ".gui-details-document-vat input",
+    "errortoast" :".notistack-SnackbarContainer"
+
 }

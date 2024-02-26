@@ -27,7 +27,11 @@
 
           "upload1" : "cypress/fixtures/downloads/documentInbox/Finetrading.pdf",
           "upload2" : "cypress/fixtures/downloads/documentInbox/Finetrading.pdf",
-          "zipcode" : "01097"
+          "zipcode" : "01097",
+          "errorinvoicetoast" : "Cannot send form, since necessary fields are not provided: number",
+          "errordeliverydate":"Cannot send form, since necessary fields are not provided: deliveryDate",
+          "errorinvoicedate":"Cannot send form, since necessary fields are not provided: date",
+          "errorduedate":"Cannot send form, since necessary fields are not provided: dueDate"
           
 
 
@@ -35,7 +39,11 @@
 
     "supplier" :{
 
-        "city" : "Dresden"
+        "city" : "Dresden",
+        "company": "gmbh",
+        "zip":"01097"
+
+
     } ,
     
     "docinbox": {
