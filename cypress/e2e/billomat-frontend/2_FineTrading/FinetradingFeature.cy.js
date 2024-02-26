@@ -55,7 +55,7 @@ describe('Framework Test Suite', () => {
 });
 
 
-it.only(`BF-25: Purchasing Frame`, () => {
+it(`BF-25: Purchasing Frame`, () => {
 		
 			
 	commonitem.selectmenuitem('finance');

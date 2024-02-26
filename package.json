@@ -8,6 +8,7 @@
     "cy:process": "APP_ID='k20270727' APP_SYS='billomat' cypress open --e2e",
     "cy:run": "cypress run  --record --key b98fc760-d071-4200-b053-f33657086230",
     "cy:local": "APP_ID='k20270727' APP_SYS='billomat' cypress run headed",
+    "cy:open": "APP_ID='k20270727' APP_SYS='billomat' cypress open --e2e",
     "cy.run:electron": "cypress run --browser electron "
   },
   "keywords": [
