@@ -22,4 +22,4 @@ jobs:
           APP_SYS: billomat 
           CYPRESS_RECORD_KEY: ${{secrets.CYPRESS_RECORD_KEY}}
         with:
-            record: true
+            record: false
