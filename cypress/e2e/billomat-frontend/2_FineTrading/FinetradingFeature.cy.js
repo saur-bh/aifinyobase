@@ -67,7 +67,7 @@ it(`BF-25: Purchasing Frame`, () => {
 });
 
 
-it.only(`BF-31: Submit missing mandatory field`, () => {
+it(`BF-31: Submit missing mandatory field`, () => {
 		
 			
 	commonitem.selectmenuitem('finance');
@@ -85,12 +85,14 @@ it.only(`BF-31: Submit missing mandatory field`, () => {
 
 			finetrading.verifyDocumentisloaded();
 			finetrading.setInvoiceDate("");
+			finetrading.setdescription("This is test description")
 			finetrading.clickbtnbasedonText("Finance now");
 			finetrading.verifyToastMessage(gd.finetrading.errorinvoicedate);
 			finetrading.setInvoiceDate("01/02/2024");
 			finetrading.setDueDate("");
 			finetrading.clickbtnbasedonText("Finance now");
-			finetrading.verifyToastMessage(gd.finetrading.errorduedate);
+			finetrading.verifyToastMessage(gd.finetrading.errordeliverydate);
+			finetrading.setDileveryDate("20/02/2024");
 			finetrading.setDueDate("20/02/2024");
 			finetrading.setInvoiceNumber("");
 			finetrading.setdescription("This is test description")

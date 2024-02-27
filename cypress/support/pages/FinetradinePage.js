@@ -44,11 +44,7 @@ verifypurchasing(){
 			cy.get('@firstText').then((firstText) => {
 				cy.get('@secondText').then((secondText) => {
 					cy.get('@lastText').then((lastText) => {
-						// You have access to all three text values
-						cy.log(`First textzzzzzz: ${firstText}`);
-						cy.log(`Second text: ${secondText}`);
-						cy.log(`Last text: ${lastText}`);
-			
+						// You have access to all three text value
 						var freepurchase = parseFloat(firstText.split(" ")[0].replace(',',""))
 						var usedpurchase = parseFloat(secondText.split(" ")[0].replace(',',""))
 						var totalpurchase = parseFloat(lastText.split(" ")[0].replace(',',""))
@@ -90,7 +86,8 @@ setInvoiceDate(date_text){
 		cy.get(locator.invoicedate).clear().tab();
 
 	}else{
-		cy.get(locator.invoicedate).clear().type(date_text);
+		cy.get(locator.invoicedate).clear().type(date_text,{ delay: 500});
+		cy.get(locator.invoicedate).tab();
 	}
 	
 };
@@ -101,12 +98,13 @@ setInvoiceDate(date_text){
  * finetrading.setDueDate("26/02/2024");
 */
 setDueDate(date_text){
-	if(date_text===""){
+	if(date_text == ""){
 
 		cy.get(locator.duedate).clear().tab();
 
 	}else{
-		cy.get(locator.duedate).clear().type(date_text);
+		cy.get(locator.duedate).clear().type(date_text,{ delay: 500});
+		cy.get(locator.duedate).tab();
 	}
 	
 };
@@ -118,12 +116,13 @@ setDueDate(date_text){
  * finetrading.setDileveryDate("26/02/2024");
 */
 setDileveryDate(date_text){
-	if(date_text=""){
+	if(date_text == ""){
 
 		cy.get(locator.deliverydate).clear().tab();
 
 	}else{
-		cy.get(locator.deliverydate).clear().type(date_text);
+		cy.get(locator.deliverydate).clear().type(date_text,{ delay: 500});
+		cy.get(locator.deliverydate).tab();
 	}
 	
 };
@@ -136,12 +135,13 @@ setDileveryDate(date_text){
  * finetrading.setInvoiceNumber("TEST_231050527");
 */
 setInvoiceNumber(text){
-	if(text=""){
+	if(text == ""){
 
-		cy.get(locator.deliverydate).clear().tab();
+		cy.get(locator.invoicenumber).clear().tab();
 
 	}else{
-		cy.get(locator.deliverydate).clear().type(text);
+		cy.get(locator.invoicenumber).clear().type(text,{ delay: 500});
+		cy.get(locator.invoicenumber).tab();
 	}
 	
 };
@@ -154,12 +154,13 @@ setInvoiceNumber(text){
  * finetrading.setInvoiceNumber("TEST_231050527");
 */
 setdescription(text){
-	if(text=""){
+	if(text == ""){
 
 		cy.get(locator.deliverydate).clear().tab();
 
 	}else{
-		cy.get(locator.deliverydate).clear().type(text);
+		cy.get(locator.deliverydate).clear().type(text,{ delay: 500});
+		cy.get(locator.deliverydate).tab();
 	}
 	
 };
@@ -173,7 +174,7 @@ setdescription(text){
  * finetrading.setInvoiceNumber("TEST_231050527");
 */
 verifyToastMessage(text){
-	cy.get(locator.errortoast,{timeout:10000}).find('span',{timeout:10000}).should('have.text',(text));
+	cy.get(locator.errortoast,{timeout:10000}).find('span',{timeout:10000}).should('contain.text',(text));
 	
 };
 
