@@ -23,3 +23,6 @@ jobs:
           CYPRESS_RECORD_KEY: ${{secrets.CYPRESS_RECORD_KEY}}
         with:
             record: false
+             browser: chrome
+             headed: true
+             spec: cypress/e2e/billomat-frontend/2_FineTrading/**/*
