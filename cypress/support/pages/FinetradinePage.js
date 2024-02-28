@@ -1,6 +1,7 @@
 
 import BasePage from "./BasePage";
 import { invoice } from "./InvoicePage";
+import { supplier } from "./SuppliersPage";
 const locator = require("../locators/billomat-frontend/finetradingPage.json");
 
 /**
@@ -195,6 +196,27 @@ verifyInvoiceNumberClickTable(){
 		cy.log('Invoice Number: ' + num);
 		// You can perform further actions with the extracted text here
 		invoice.verifyInvoiceNumber(num)
+	
+	  });
+	
+};
+
+
+/**
+ * Function to  verify the supplier name when user click on table 
+ * @example
+ * finetrading.verifyInvoiceNumberClickTable();
+*/
+verifySupplierNameClickTable(){
+	cy.get(locator.tablerow).should('be.visible').first()
+	.find(locator.datarowsupplier).invoke('text').as('supplier')
+	cy.get(locator.tablerow).first()
+	.find(locator.datarowsupplier).click()
+
+	cy.get('@supplier').then((name) => {
+		cy.log('Supplier name: ' + name);
+		// You can perform further actions with the extracted text here
+		supplier.verifySupplierName(name)
 	
 	  });
 	

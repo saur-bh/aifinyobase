@@ -46,7 +46,7 @@ typecompany(value){
 
 verifySupplierName(text){
 
-	cy.get(locator.companyname).should('be.visible').and('have.value',text);
+	cy.get(locator.companyname).first().should('be.visible').and('have.value',text);
 }
 
 }

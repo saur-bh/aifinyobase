@@ -6,8 +6,8 @@
   "scripts": {
     "cy:dresden": "cypress open --e2e",
     "cy:process": "APP_ID='k20270727' APP_SYS='billomat' cypress open --e2e",
-    "cy:run": "cypress run  --record --key b98fc760-d071-4200-b053-f33657086230",
-    "cy:local": "APP_ID='k20270727' APP_SYS='billomat' cypress run headed",
+    "cy:run": "cypress run  --record --key b98fc760-d071-4200-b053-f33657086230 --spec 'cypress/e2e/billomat-frontend/2_FineTrading/**/*'",
+    "cy:local": "APP_ID='k20270727' APP_SYS='billomat' cypress run  --spec 'cypress/e2e/billomat-frontend/2_FineTrading/**/*'",
     "cy:open": "APP_ID='k20270727' APP_SYS='billomat' cypress open --e2e",
     "cy.run:electron": "cypress run --browser electron "
   },

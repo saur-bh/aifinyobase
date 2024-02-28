@@ -4,5 +4,5 @@
    "company": "#user-input-name",
    "zip":"#user-input-zip",
    "tabledata" :".paginated-table.paginated-suppliers td",
-   "compnayname" :".mb40 .masterdata-details input :nth-child(1)"
+   "companyname" :"[data-test-id='SupplierDetailLayout'] input"
 }
