@@ -38,9 +38,13 @@ clickactionbutton(item){
 */
 verifyStatus(status){
 
- 
+  if(status== 'Paid'){
+    cy.get('.sidebar-box.state',{timeout:20000}).find('p',{timeout:10000}).should('not.have.text',("Draft")).and('have.text',(status));
+  }else{
+    cy.get('.sidebar-box.state',{timeout:20000}).find('p',{timeout:10000}).should('have.text',(status));
+  }
        
-            cy.get('.sidebar-box.state',{timeout:10000}).find('p',{timeout:10000}).should('have.text',(status));
+            
     
                    
 
@@ -74,6 +78,14 @@ clickactionItem(action){
     }
 
 };
+
+/**
+ * Function to verify Invoice number
+*/
+verifyInvoiceNumber(num){
+
+	cy.get(locator.invoicenum).should('be.visible').and('have.text',num);
+}
 	
 };
 export const invoice = new InvoicePage();

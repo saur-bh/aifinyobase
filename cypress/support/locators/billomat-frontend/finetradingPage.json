@@ -9,6 +9,11 @@
     "description": ".gui-details-document-description input",
     "price" : ".gui-details-document-price input",
     "tax": ".gui-details-document-vat input",
-    "errortoast" :".notistack-SnackbarContainer"
+    "errortoast" :".notistack-SnackbarContainer",
+    "tablerow" : ".fe-table--row",
+    "datarownumber" : "[data-label='Number'] a",
+    "datarowsupplier" : "data-label='supplier'"
+
+
 
 }

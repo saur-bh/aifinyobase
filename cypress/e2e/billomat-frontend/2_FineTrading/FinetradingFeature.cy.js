@@ -48,7 +48,7 @@ describe('Framework Test Suite', () => {
 		documentinbox.selectDocumentTypeandClick(gd.docinbox.doctype , gd.docinbox.operation);
 
 		
-		supplier.searchsupplierviaCompanyandClick(gd.supplier.city);
+		supplier.searchsupplierandClick(gd.supplier.city);
 		
 
 
@@ -101,6 +101,14 @@ it(`BF-31: Submit missing mandatory field`, () => {
 			finetrading.clickbtnbasedonText("Cancel");
 			
   
+});
+
+it(`BF-27: User can open invoice from invoice number`,()=>{
+
+	commonitem.selectmenuitem('finance');
+	finetrading.verifyInvoiceNumberClickTable();
+
+
 });
 
 afterEach('logout',()=>{

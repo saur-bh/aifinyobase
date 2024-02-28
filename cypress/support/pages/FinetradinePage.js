@@ -1,5 +1,6 @@
 
 import BasePage from "./BasePage";
+import { invoice } from "./InvoicePage";
 const locator = require("../locators/billomat-frontend/finetradingPage.json");
 
 /**
@@ -177,6 +178,28 @@ verifyToastMessage(text){
 	cy.get(locator.errortoast,{timeout:10000}).find('span',{timeout:10000}).should('contain.text',(text));
 	
 };
+
+
+/**
+ * Function to  verify the invoice number when user click on table 
+ * @example
+ * finetrading.verifyInvoiceNumberClickTable();
+*/
+verifyInvoiceNumberClickTable(){
+	cy.get(locator.tablerow).should('be.visible').first()
+	.find(locator.datarownumber).invoke('text').as('invoicenumber')
+	cy.get(locator.tablerow).first()
+	.find(locator.datarownumber).click()
+
+	cy.get('@invoicenumber').then((num) => {
+		cy.log('Invoice Number: ' + num);
+		// You can perform further actions with the extracted text here
+		invoice.verifyInvoiceNumber(num)
+	
+	  });
+	
+};
+
 
 
 }

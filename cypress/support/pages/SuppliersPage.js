@@ -44,6 +44,11 @@ typecompany(value){
 
 };
 
+verifySupplierName(text){
+
+	cy.get(locator.companyname).should('be.visible').and('have.value',text);
+}
+
 }
 
 export const supplier = new SuppliersPage();

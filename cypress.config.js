@@ -4,6 +4,8 @@ const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/li
 module.exports = defineConfig({
 	projectId: "tmyvht",
 	reporter: 'cypress-mochawesome-reporter',
+	viewportWidth: 1440,
+  	viewportHeight: 900,
 	reporterOptions: {
 		// overwrite: false,
 		reportFilename: "[status]_[datetime]-report",
