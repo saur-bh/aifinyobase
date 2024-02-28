@@ -112,7 +112,7 @@ it(`BF-27: User can open invoice from invoice number`,()=>{
 });
 
 
-it.only(`BF-26: User can open supplier from the finetradig table`,()=>{
+it(`BF-26: User can open supplier from the finetradig table`,()=>{
 
 	commonitem.selectmenuitem('finance');
 	finetrading.verifySupplierNameClickTable();
