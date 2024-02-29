@@ -2,7 +2,8 @@ import { login } from "../../../support/pages/LoginPage";
 import { commonitem } from "../../../support/pages/CommonItemPage";
 import { documentinbox } from "../../../support/pages/DocumentInboxPage";
 import {supplier} from "../../../support/pages/SuppliersPage";
-import {finetrading} from "../../../support/pages/FinetradinePage"
+import {finetrading} from "../../../support/pages/FinetradinePage";
+import { qase } from 'cypress-qase-reporter/dist/mocha';
 describe('Framework Test Suite', () => {
 	
 	let gd;
@@ -17,27 +18,30 @@ describe('Framework Test Suite', () => {
 	});
 
 	
-	it(`BF-13 :Submit for fine trading with existing supplier`, () => {
+
+	qase( 13 ,it(`BF-13 :Submit for fine trading with existing supplier`, () => {
+	
+			
+		commonitem.selectmenuitem('finance');
+
+		commonitem.clickshortcutItem('supplierinvoice');
+
+		documentinbox.fileUpload(gd.finetrading.upload1);
+
+		documentinbox.selectDocumentTypeandClick(gd.docinbox.doctype , gd.docinbox.operation);
+
+
+
+		supplier.searchsupplierandClick(gd.supplier.city);
+
+		finetrading.verifyDocumentisloaded();
 		
-			
-			commonitem.selectmenuitem('finance');
+	  
+}) 
+) ;
 
-			commonitem.clickshortcutItem('supplierinvoice');
-
-            documentinbox.fileUpload(gd.finetrading.upload1);
-
-			documentinbox.selectDocumentTypeandClick(gd.docinbox.doctype , gd.docinbox.operation);
-
-
-
-			supplier.searchsupplierandClick(gd.supplier.city);
-
-			finetrading.verifyDocumentisloaded();
-			
-          
-	});
-
-
+	
+qase(15,
 	it(`BF-15:  Upload of Invoice from document Inbox`, () => {
 		
 			
@@ -55,19 +59,21 @@ describe('Framework Test Suite', () => {
 		finetrading.verifyDocumentisloaded();
 		
 	  
-});
+})
+);
 
 
-it(`BF-25: Purchasing Frame`, () => {
+qase(25,it(`BF-25: Purchasing Frame`, () => {
 		
 			
 	commonitem.selectmenuitem('finance');
 	finetrading.verifypurchasing();
   
-});
+}));
 
 
-it(`BF-31: Submit missing mandatory field`, () => {
+
+qase( 31,it(`BF-31: Submit missing mandatory field`, () => {
 		
 			
 	commonitem.selectmenuitem('finance');
@@ -101,27 +107,28 @@ it(`BF-31: Submit missing mandatory field`, () => {
 			finetrading.clickbtnbasedonText("Cancel");
 			
   
-});
+}));
 
-it(`BF-27: User can open invoice from invoice number`,()=>{
+
+qase(27,it(`BF-27: User can open invoice from invoice number`,()=>{
 
 	commonitem.selectmenuitem('finance');
 	finetrading.verifyInvoiceNumberClickTable();
 
 
-});
+}));
 
 
-it(`BF-26: User can open supplier from the finetradig table`,()=>{
+qase(26,it(`BF-26: User can open supplier from the finetradig table`,()=>{
 
 	commonitem.selectmenuitem('finance');
 	finetrading.verifySupplierNameClickTable();
 
 
-});
+}));
 
 
-it.only(`BF-14: Submit for fine trading with existing supplier with same InvoiceNumber`,()=>{
+qase(14,it(`BF-14: Submit for fine trading with existing supplier with same InvoiceNumber`,()=>{
 
 	commonitem.selectmenuitem('finance');
 	commonitem.clickshortcutItem('supplierinvoice');
@@ -145,7 +152,8 @@ it.only(`BF-14: Submit for fine trading with existing supplier with same Invoice
 
 
 
-});
+}));
+
 
 
 

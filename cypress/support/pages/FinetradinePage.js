@@ -30,12 +30,12 @@ verifyDocumentisloaded(){
  * finetrading.verifypurchasing();
 */
 verifypurchasing(){
-	var freepurchase, usedpurchanse, totalpurchase;
-	cy.get('iframe').then(($iframe) => {
+	//cy.get('iframe').then(($iframe) => {
 		// Switch to the iframe
-		$iframe.remove();
+		//$iframe.remove();
 		
-		cy.wait(1000)
+		cy.wait(1000);
+		cy.get(locator.purchaceboxvalue).should('be.visible').and('not.have.text'," ");
 		cy.window().then((parentWindow) => {
 			
 			cy.get(locator.purchaceboxvalue).first().invoke('text').as('firstText');
@@ -60,7 +60,7 @@ verifypurchasing(){
 
 
 		});
-	});
+	//});
 	
 };
 

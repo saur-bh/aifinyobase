@@ -3,20 +3,23 @@ const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/li
 
 module.exports = defineConfig({
 	projectId: "tmyvht",
-	reporter: 'cypress-mochawesome-reporter',
-	viewportWidth: 1440,
-  	viewportHeight: 900,
+	reporter: 'cypress-multi-reporters',
 	reporterOptions: {
-		// overwrite: false,
-		reportFilename: "[status]_[datetime]-report",
-		// timestamp: "longDate",
-		charts: true,
-		reportPageTitle: 'Automation Report -Aifinyo Regression',
-		embeddedScreenshots: true,
-		inlineAssets: true,
-		saveAllAttempts: true,
-		// ignoreVideos: true,
-		videoOnFailOnly: true
+		reporterEnabled: 'cypress-mochawesome-reporter, cypress-qase-reporter',
+		cypressMochawesomeReporterReporterOptions: {
+		  charts: true,
+		},
+		cypressQaseReporterReporterOptions: {
+		  apiToken: 'b709f05e2eb3a5b7f1b28bdd37d3cb4e6144c339c29aee64529fbf37da2da54d',
+		  projectCode: 'BF',
+		  logging: true,
+		  basePath: 'https://api.qase.io/v1',
+		  screenshotFolder: 'screenshots',
+		  sendScreenshot: true,
+		  runComplete: true,
+		  environmentId: 1,
+		  rootSuiteTitle: 'Cypress tests',
+		},
 	  },
 	env: {
 		username : "saurabh.verma@aifinyo.de",
@@ -50,6 +53,8 @@ module.exports = defineConfig({
      
 		},
 		baseUrl: "https://dresden.billodev.net/app/auth",
+		viewportWidth: 1440,
+		viewportHeight: 900,
 
 	},
 });
