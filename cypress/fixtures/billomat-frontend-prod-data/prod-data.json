@@ -31,7 +31,9 @@
           "errorinvoicetoast" : "Cannot send form, since necessary fields are not provided: number",
           "errordeliverydate":"Cannot send form, since necessary fields are not provided: deliveryDate",
           "errorinvoicedate":"Cannot send form, since necessary fields are not provided: date",
-          "errorduedate":"Cannot send form, since necessary fields are not provided: dueDate"
+          "errorduedate":"Cannot send form, since necessary fields are not provided: dueDate",
+          "apolloError": "Gültigkeitsprüfung ist fehlgeschlagen: Number Rechnungsnummer ist bereits vergeben"
+
           
 
 

@@ -18,7 +18,7 @@ class CommonItemPage extends BasePage
  * commonItem.selectmenuitem('invoices');
 */
 selectmenuitem(item){
-	cy.get(`[href="/app/beta/${item}"]`).click();
+	cy.get(`[href="/app/beta/${item}"]`).should('be.visible').click();
 	
 };
 

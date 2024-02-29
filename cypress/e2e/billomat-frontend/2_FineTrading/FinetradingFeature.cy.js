@@ -121,6 +121,33 @@ it(`BF-26: User can open supplier from the finetradig table`,()=>{
 });
 
 
+it.only(`BF-14: Submit for fine trading with existing supplier with same InvoiceNumber`,()=>{
+
+	commonitem.selectmenuitem('finance');
+	commonitem.clickshortcutItem('supplierinvoice');
+
+	documentinbox.fileUpload(gd.finetrading.upload1);
+
+	documentinbox.selectDocumentTypeandClick(gd.docinbox.doctype , gd.docinbox.operation);
+
+
+	supplier.typeZip(gd.supplier.zip);
+	supplier.typecompany(gd.supplier.company)
+	supplier.searchsupplierandClick(gd.supplier.city);
+
+	finetrading.verifyDocumentisloaded();
+	finetrading.setdescription("This is test description")
+	finetrading.setInvoiceNumber("082600244");
+	finetrading.setDileveryDate("20/02/2024");
+	finetrading.clickbtnbasedonText("Finance now");
+	finetrading.verifyToastMessage(gd.finetrading.apolloError);
+	finetrading.clickbtnbasedonText("Cancel");
+
+
+
+});
+
+
 
 afterEach('logout',()=>{
 
