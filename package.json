@@ -31,5 +31,8 @@
   },
   "dependencies": {
     "cypress-multi-reporters": "^1.6.4"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
   }
 }
