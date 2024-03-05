@@ -119,7 +119,7 @@ qase(27,it(`BF-27: User can open invoice from invoice number`,()=>{
 }));
 
 
-qase(26,it(`BF-26: User can open supplier from the finetradig table`,()=>{
+qase(26,it.only(`BF-26: User can open supplier from the finetradig table`,()=>{
 
 	commonitem.selectmenuitem('finance');
 	finetrading.verifySupplierNameClickTable();

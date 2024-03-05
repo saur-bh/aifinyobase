@@ -51,7 +51,10 @@
     "docinbox": {
 
       "doctype" : "Finetrading Invoice",
-      "operation": "Apply for finetrading"
+      "operation": "Apply for finetrading",
+      "operationother": "Upload",
+      "doctypeotherreminder" : "Reminder"
+
 
     }
 

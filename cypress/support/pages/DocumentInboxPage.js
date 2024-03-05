@@ -28,6 +28,18 @@ fileUpload(filePath){
  * @example
  * documentinbox.upload("filePath");
 */
+fileUploadCancel(filePath){
+
+	cy.get(locator.uploadfile).find('button',{timeout:10000}).should('have.value','Cancel').click();
+	
+};
+
+/**
+ * Function to  upload file 
+ * @property {String} path path of the file.
+ * @example
+ * documentinbox.upload("filePath");
+*/
 uploadFile(filePath){
 
 	cy.get(locator.uploadfile).selectFile(filePath,{force : true});

@@ -188,15 +188,14 @@ verifyToastMessage(text){
 */
 verifyInvoiceNumberClickTable(){
 	cy.get(locator.tablerow).should('be.visible').first()
-	.find(locator.datarownumber).invoke('text').as('invoicenumber')
-	cy.get(locator.tablerow).first()
-	.find(locator.datarownumber).click()
-
-	cy.get('@invoicenumber').then((num) => {
-		cy.log('Invoice Number: ' + num);
-		// You can perform further actions with the extracted text here
-		invoice.verifyInvoiceNumber(num)
+	.find(locator.datarownumber).invoke('text').as('invoicenumber');
+	//
 	
+	cy.get('@invoicenumber').then((invoiceNumber) => {
+		cy.get(locator.tablerow).first().find(locator.datarownumber).click();
+		cy.log(`Invoice Number: ${invoiceNumber}`);
+		invoice.verifyInvoiceNumber(invoiceNumber);
+
 	  });
 	
 };
@@ -210,13 +209,11 @@ verifyInvoiceNumberClickTable(){
 verifySupplierNameClickTable(){
 	cy.get(locator.tablerow).should('be.visible').first()
 	.find(locator.datarowsupplier).invoke('text').as('supplier')
-	cy.get(locator.tablerow).first()
-	.find(locator.datarowsupplier).click()
 
-	cy.get('@supplier').then((name) => {
-		cy.log('Supplier name: ' + name);
-		// You can perform further actions with the extracted text here
-		supplier.verifySupplierName(name)
+	cy.get('@supplier').then((sup) => {
+		cy.get(locator.tablerow).first().find(locator.datarowsupplier).click();
+		cy.log(`Supplier Name: ${sup}`);
+		supplier.verifySupplierName(sup)
 	
 	  });
 	
