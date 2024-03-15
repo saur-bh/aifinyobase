@@ -45,7 +45,7 @@ describe('GraphQL API mock data', () => {
             
             //expect(res.status).to.eq(200)
             cy.log("dkjhdhdhkdh")
-            cy.log(res.body.data)//.to.eq('20000')
+            cy.log(res.body.data.documents.total)//.to.eq('20000')
           
         
           });
