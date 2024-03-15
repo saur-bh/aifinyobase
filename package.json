@@ -10,7 +10,7 @@
     "cy:local": "APP_ID='k20270727' APP_SYS='billomat' cypress run  --spec 'cypress/e2e/billomat-frontend/2_FineTrading/**/*'",
     "cy:edge": "APP_ID='k20270727' APP_SYS='billomat' cypress run  --spec 'cypress/e2e/billomat-frontend/2_FineTrading/**/*' --headed",
     "cy:open": "APP_ID='k20270727' APP_SYS='billomat' cypress open --e2e",
-    "cy.run:electron": "cypress run --browser electron ",
+    "cy:runtest": "cypress run  --spec 'cypress/e2e/billomat-frontend/developement/**/*'",
     "lint": "eslint --fix cypress/support/**"
   },
   "keywords": [
