@@ -28,8 +28,8 @@ module.exports = defineConfig({
 	},
 	defaultCommandTimeout : 10000,
 	retries:{
-		runMode: 1,
-		openMode: 1,
+		runMode: 0,
+		openMode: 0,
 		},
 	e2e: {
 		setupNodeEvents(on, config) {
@@ -52,7 +52,7 @@ module.exports = defineConfig({
 
      
 		},
-		baseUrl: "https://dresden.billodev.net/app/auth",
+		baseUrl: "https://dresden.billodev.net",
 		viewportWidth: 1440,
 		viewportHeight: 900,
 
