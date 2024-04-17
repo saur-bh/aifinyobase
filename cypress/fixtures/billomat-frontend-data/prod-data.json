@@ -1,0 +1,66 @@
+{   
+    "login" : 
+    {
+    "URL": "k20270727",
+    "email": "saurabh.verma@aifinyo.de",
+    "password": "welcome123"
+    },
+    
+    "client" : {
+
+      "clientNumber" :"1",
+      "company" : " ",
+      "email" : "compay" ,
+      "firtname" : "SomeName",
+      "lastname" : "some name"
+
+
+    },
+
+    "invoice" : {
+
+       "description" : "This is test invoice I am working on"
+
+    },
+
+    "finetrading":{
+
+          "upload1" : "cypress/fixtures/downloads/documentInbox/Finetrading.pdf",
+          "upload2" : "cypress/fixtures/downloads/documentInbox/Finetrading.pdf",
+          "zipcode" : "01097",
+          "errorinvoicetoast" : "Cannot send form, since necessary fields are not provided: number",
+          "errordeliverydate":"Cannot send form, since necessary fields are not provided: deliveryDate",
+          "errorinvoicedate":"Cannot send form, since necessary fields are not provided: date",
+          "errorduedate":"Cannot send form, since necessary fields are not provided: dueDate",
+          "apolloError": "Gültigkeitsprüfung ist fehlgeschlagen: Number Rechnungsnummer ist bereits vergeben"
+
+          
+
+
+    },
+
+    "supplier" :{
+
+        "city" : "Dresden",
+        "company": "gmbh",
+        "zip":"01097"
+
+
+    } ,
+    
+    "docinbox": {
+
+      "doctype" : "Finetrading Invoice",
+      "operation": "Apply for finetrading",
+      "operationother": "Upload",
+      "doctypeotherreminder" : "Reminder"
+
+
+    }
+
+   
+    
+
+    
+  }
+  

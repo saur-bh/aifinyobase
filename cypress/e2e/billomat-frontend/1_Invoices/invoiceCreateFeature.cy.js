@@ -5,12 +5,24 @@ import { invoice } from "../../../support/pages/InvoicePage";
 describe('Framework Test Suite', () => {
 	
 	let gd;
+	
 
   beforeEach('Add all data to be used while testing', () => {
+	
 	cy.loginToApp();
-    cy.fixture("billomat-frontend-prod-data/prod-data").then((data) => {
-      gd = data;
-    });
+	if(Cypress.env("id")=='billodev'){
+		cy.log("Using Staging Data file...");
+		cy.fixture("billomat-frontend-data/dev-data").then((data) => {
+			gd = data;
+		  });
+
+	}else{
+		cy.log("Using Prod Data file...")
+		cy.fixture("billomat-frontend-prod-data/prod-data").then((data) => {
+			gd = data;
+		  });
+	}
+   
 	
 
 	});

@@ -1,6 +1,7 @@
 const { defineConfig } = require('cypress');
 const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/lib');
 
+
 module.exports = defineConfig({
 	projectId: "tmyvht",
 	reporter: 'cypress-multi-reporters',
@@ -24,7 +25,7 @@ module.exports = defineConfig({
 	env: {
 		username : "saurabh.verma@aifinyo.de",
 		password: "welcome123",
-
+		id: process.env.APP_SYS,
 	},
 	defaultCommandTimeout : 10000,
 	retries:{
@@ -33,6 +34,8 @@ module.exports = defineConfig({
 		},
 	e2e: {
 		setupNodeEvents(on, config) {
+			const billomatid = process.env.APP_ID	
+			const system = process.env.APP_SYS
 			on('before:run', async details => {
 				console.log('override before:run');
 				await beforeRunHook(details);
@@ -42,19 +45,12 @@ module.exports = defineConfig({
 				console.log('override after:run');
 				await afterRunHook();
 			});
-		const billomatid = process.env.APP_ID
-      	const system = process.env.APP_SYS
-		if(billomatid && system != undefined){
 			config.baseUrl = `https://${billomatid}.${system}.net`
 			return config
 
-		}
-
-     
 		},
 		baseUrl: "https://dresden.billodev.net",
 		viewportWidth: 1440,
 		viewportHeight: 900,
-
 	},
 });
