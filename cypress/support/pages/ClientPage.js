@@ -14,11 +14,6 @@ class ClientPage extends BasePage {
  * @example
  * client.clientNumber('TEST123');
 */
-searchviaClientNumberandClick(value){
-	cy.get(locator.clientnumber).type(value ,{ delay: 1000});
-    cy.get(locator.tabledata).first().should('have.text',value).click();
-};
-
 /**
  * Function to  type in the client number to search in client dialogbox.
  * @property {String} value Text which needs to be entered.
@@ -30,7 +25,23 @@ description(text){
     cy.get(locator.description).type(text,{delay:100});
 };
 
+searchviaClientNumberandClick(value){
 
+    cy.get(locator.clientnumber).each(($label) => {
+        cy.wrap($label).invoke('text').then((text) => {
+          if (text.trim()== 'Client Number') {
+            cy.wrap($label).parent().find('input').type(value,{ delay: 10});
+          }
+        });
+       
+
+      });
+      cy.log("I am executing afterwated ")
+      cy.get(locator.tabledata).should('have.text',value).prev('td').click();
+      cy.contains('span', 'Apply').click();
+
+
+};
 	
 };
 

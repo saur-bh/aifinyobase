@@ -8,7 +8,7 @@
     
     "client" : {
 
-      "clientNumber" :"1",
+      "clientNumber" :"QA-Automation1234",
       "company" : " ",
       "email" : "compay" ,
       "firtname" : "SomeName",
@@ -19,7 +19,7 @@
 
     "invoice" : {
 
-       "description" : "This is test invoice I am working on"
+       "description" : "This Test Invoice description is from Automation. "
 
     },
 

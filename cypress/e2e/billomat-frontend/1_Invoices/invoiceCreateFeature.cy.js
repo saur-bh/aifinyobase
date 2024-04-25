@@ -34,7 +34,6 @@ describe('Framework Test Suite', () => {
 			commonitem.clickshortcutItem('Neue Rechnung');
 
 			client.searchviaClientNumberandClick(gd.client.clientNumber);
-			
 			invoice.description(gd.invoice.description);
 			invoice.clickactionbutton('Save');
 			invoice.verifyStatus('Draft');

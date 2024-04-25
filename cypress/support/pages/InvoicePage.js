@@ -15,8 +15,11 @@ class InvoicePage extends BasePage {
 */
 
 description(text){
-    cy.get('#document-name',{timeout: 10000}).should('be.visible')
-    cy.get('#document-label').scrollIntoView().should('be.visible').type(text,{delay:100});
+    cy.get(locator.txt_invoiceNumber,{timeout: 10000}).should('be.visible')
+
+    cy.get(locator.txt_description).scrollIntoView().should('be.visible').type(text,{delay:100});
+
+ 
 };
 
 clickactionbutton(item){

@@ -1,5 +1,5 @@
 {
-    "clientnumber" :"#clientNumber",
-    "tabledata" :".paginated-table.paginated-clients td",
+    "clientnumber" :".fe-input--label",
+    "tabledata" :"td[data-label='Client Number']",
     "description" : "[name='document-label']"
 }
