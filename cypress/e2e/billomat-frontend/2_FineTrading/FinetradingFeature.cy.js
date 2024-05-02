@@ -18,11 +18,12 @@ describe('Framework Test Suite', () => {
 
 	}else{
 		cy.log("Using Prod Data file...")
-		cy.fixture("billomat-frontend-prod-data/prod-data").then((data) => {
+		cy.fixture("billomat-frontend-data/dev-data").then((data) => {
 			gd = data;
 		  });
 	}
-
+   
+	
 	});
 
 	

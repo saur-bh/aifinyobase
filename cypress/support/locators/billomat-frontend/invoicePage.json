@@ -1,6 +1,6 @@
 {
     "invoicenum":".gui-details-document-incomingnumber > .fe-textarea",
     "txt_description" : "input[name='document-label']",
-    "txt_invoiceNumber" : " name='document-name'"
+    "txt_invoiceNumber" : "input[name='document-name']"
 
 }
