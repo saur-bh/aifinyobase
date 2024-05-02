@@ -6,12 +6,12 @@ describe('Get Header Information', () => {
     // Make a POST request to login and retrieve a session cookie
     cy.request({
       method: 'POST',
-      url: 'https://dresden.billodev.net/app/auth/login',
+      url: 'https://stagqa.billodev.net/app/auth/login',
       form: true, // Use form data
       body: {
         username: username,
         password: password,
-        billomatId: "dresden"
+        billomatId: "stagqa"
       }
     }).then((loginResponse) => {
       // Check if login was successful
@@ -24,7 +24,7 @@ describe('Get Header Information', () => {
       // Make a GET request to the target URL with the session cookie
       cy.request({
         method: 'GET',
-        url: 'https://dresden.billodev.net/app/beta',
+        url: 'https://stagqa.billodev.net/app/beta',
         headers: {
           'Cookie': sessionCookie // Send session cookie in the request headers
         }

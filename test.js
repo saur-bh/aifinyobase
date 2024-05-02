@@ -1,8 +1,8 @@
 // URL for login
-const loginUrl = 'https://dresden.billodev.net/app/auth';
+const loginUrl = 'https://stagqa.billodev.net/app/auth';
 
 // URL to fetch headers from after login
-const targetUrl = 'https://dresden.billodev.net/app/beta';
+const targetUrl = 'https://stagqa.billodev.net/app/beta';
 
 // Login credentials
 const username = 'saurabh.verma@aifinyo.de';

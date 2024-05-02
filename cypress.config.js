@@ -49,7 +49,7 @@ module.exports = defineConfig({
 			return config
 
 		},
-		baseUrl: "https://dresden.billodev.net",
+		baseUrl: "https://stagqa.billodev.net",
 		viewportWidth: 1440,
 		viewportHeight: 900,
 	},
