@@ -27,23 +27,51 @@ describe('Framework Test Suite', () => {
 
 	});
 	
+
+	qase( 8 ,
+	it(`Should able to cancel new invoice creation with existing client `, () => {
+		
+			
+		commonitem.selectmenuitem('invoices');
+		commonitem.clickshortcutItem('Neue Rechnung');
+
+		client.searchviaClientNumberandClick(gd.client.clientNumber);
+		invoice.description(gd.invoice.description);
+		invoice.clickactionbutton('Save');
+		invoice.verifyStatus('Draft');
+		invoice.clickactionItem('Complete');
+		invoice.clickactionItem('Approve');
+		invoice.verifyStatus('Paid');
+			// comment
+
+	})
+) ; 
+
+qase( 7 ,
+
 	it(`Should able to create new invoice with existing client`, () => {
 		
 			
-			commonitem.selectmenuitem('invoices');
-			commonitem.clickshortcutItem('Neue Rechnung');
+		commonitem.selectmenuitem('invoices');
+		commonitem.clickshortcutItem('Neue Rechnung');
 
-			client.searchviaClientNumberandClick(gd.client.clientNumber);
-			invoice.description(gd.invoice.description);
-			invoice.clickactionbutton('Save');
-			invoice.verifyStatus('Draft');
-			invoice.clickactionItem('Complete');
-			invoice.clickactionItem('Approve');
-			invoice.verifyStatus('Paid');
-				// comment
-	
-	})
-	
+		client.searchviaClientNumberandClick(gd.client.clientNumber);
+		invoice.description(gd.invoice.description);
+		invoice.clickactionbutton('Save');
+		invoice.verifyStatus('Draft');
+		invoice.clickactionItem('Complete');
+		invoice.clickactionItem('Approve');
+		invoice.verifyStatus('Paid');
+			// comment
+
+})
+
+) ; 
+
+
+
+
+
 	afterEach('logout',()=>{
 
 		login.navigateToUrl('/app/auth/logout')
