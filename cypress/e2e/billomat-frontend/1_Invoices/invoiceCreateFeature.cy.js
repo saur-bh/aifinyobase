@@ -2,6 +2,7 @@ import { login } from "../../../support/pages/LoginPage";
 import { commonitem } from "../../../support/pages/CommonItemPage";
 import { client } from "../../../support/pages/ClientPage";
 import { invoice } from "../../../support/pages/InvoicePage";
+import { qase } from 'cypress-qase-reporter/dist/mocha';
 describe('Framework Test Suite', () => {
 	
 	let gd;
