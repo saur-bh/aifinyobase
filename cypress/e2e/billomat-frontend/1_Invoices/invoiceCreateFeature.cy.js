@@ -3,81 +3,77 @@ import { commonitem } from "../../../support/pages/CommonItemPage";
 import { client } from "../../../support/pages/ClientPage";
 import { invoice } from "../../../support/pages/InvoicePage";
 import { qase } from 'cypress-qase-reporter/dist/mocha';
+
+const testConfig = {
+  environmentId: 'billodev',
+  dataFileName: 'billomat-frontend-data/dev-data',
+  navigation: {
+    invoicesMenuItem: 'invoices',
+    newInvoiceShortcut: 'Neue Rechnung',
+  },
+  clientSearch: {
+    searchKey: 'clientNumber',
+  },
+  invoiceDetails: {
+    descriptionKey: 'description',
+  },
+  invoiceActions: {
+    saveButton: 'Save',
+    completeButton: 'Complete',
+    approveButton: 'Approve',
+  },
+  invoiceStatus: {
+    draft: 'Draft',
+    paid: 'Paid',
+  },
+  logoutUrl: '/app/auth/logout',
+};
+
 describe('Framework Test Suite', () => {
-	
-	let gd;
-	
+  let testData;
 
-  beforeEach('Add all data to be used while testing', () => {
-	
-	cy.loginToApp();
-	if(Cypress.env("id")=='billodev'){
-		cy.log("Using Staging Data file...");
-		cy.fixture("billomat-frontend-data/dev-data").then((data) => {
-			gd = data;
-		  });
+  beforeEach('Load test data', () => {
+    cy.loginToApp();
+    if (Cypress.env('id') === testConfig.environmentId) {
+      cy.log(`Using Staging Data file...`);
+      cy.fixture(testConfig.dataFileName).then((data) => {
+        testData = data;
+      });
+    } else {
+      cy.log(`Using Prod Data file...`);
+      cy.fixture(testConfig.dataFileName).then((data) => {
+        testData = data;
+      });
+    }
+  });
 
-	}else{
-		cy.log("Using Prod Data file...")
-		cy.fixture("billomat-frontend-data/dev-data").then((data) => {
-			gd = data;
-		  });
-	}
-   
-	
+  qase(8, it(`Should be able to cancel new invoice creation with existing client `, () => {
+    commonitem.selectmenuitem(testConfig.navigation.invoicesMenuItem);
+    commonitem.clickshortcutItem(testConfig.navigation.newInvoiceShortcut);
 
-	});
-	
+    client.searchviaClientNumberandClick(testData.client[testConfig.clientSearch.searchKey]);
+    invoice.description(testData.invoice[testConfig.invoiceDetails.descriptionKey]);
+    invoice.clickactionbutton(testConfig.invoiceActions.saveButton);
+    invoice.verifyStatus(testConfig.invoiceStatus.draft);
+    invoice.clickactionItem(testConfig.invoiceActions.completeButton);
+    invoice.clickactionItem(testConfig.invoiceActions.approveButton);
+    invoice.verifyStatus(testConfig.invoiceStatus.paid);
+  }));
 
-	qase( 8 ,
-	it(`Should able to cancel new invoice creation with existing client `, () => {
-		
-			
-		commonitem.selectmenuitem('invoices');
-		commonitem.clickshortcutItem('Neue Rechnung');
+  qase(7, it(`Should be able to create new invoice with existing client`, () => {
+    commonitem.selectmenuitem(testConfig.navigation.invoicesMenuItem);
+    commonitem.clickshortcutItem(testConfig.navigation.newInvoiceShortcut);
 
-		client.searchviaClientNumberandClick(gd.client.clientNumber);
-		invoice.description(gd.invoice.description);
-		invoice.clickactionbutton('Save');
-		invoice.verifyStatus('Draft');
-		invoice.clickactionItem('Complete');
-		invoice.clickactionItem('Approve');
-		invoice.verifyStatus('Paid');
-			// comment
+    client.searchviaClientNumberandClick(testData.client[testConfig.clientSearch.searchKey]);
+    invoice.description(testData.invoice[testConfig.invoiceDetails.descriptionKey]);
+    invoice.clickactionbutton(testConfig.invoiceActions.saveButton);
+    invoice.verifyStatus(testConfig.invoiceStatus.draft);
+    invoice.clickactionItem(testConfig.invoiceActions.completeButton);
+    invoice.clickactionItem(testConfig.invoiceActions.approveButton);
+    invoice.verifyStatus(testConfig.invoiceStatus.paid);
+  }));
 
-	})
-) ; 
-
-qase( 7 ,
-
-	it(`Should able to create new invoice with existing client`, () => {
-		
-			
-		commonitem.selectmenuitem('invoices');
-		commonitem.clickshortcutItem('Neue Rechnung');
-
-		client.searchviaClientNumberandClick(gd.client.clientNumber);
-		invoice.description(gd.invoice.description);
-		invoice.clickactionbutton('Save');
-		invoice.verifyStatus('Draft');
-		invoice.clickactionItem('Complete');
-		invoice.clickactionItem('Approve');
-		invoice.verifyStatus('Paid');
-			// comment
-
-})
-
-) ; 
-
-
-
-
-
-	afterEach('logout',()=>{
-
-		login.navigateToUrl('/app/auth/logout')
-
-	})
-	
+  afterEach('logout', () => {
+    login.navigateToUrl(testConfig.logoutUrl);
+  });
 });
-
