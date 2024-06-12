@@ -42,7 +42,7 @@ Cypress.Commands.add('loginToApp', () => {
     login.navigateToUrl(`/app`);
 		login.email(Cypress.env('username'));
 		login.password(Cypress.env('password'));
-		login.clickloginBtn();
+		login.clickLoginBtn();
  })
 
 
