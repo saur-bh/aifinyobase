@@ -27,15 +27,10 @@ description(text){
 
 searchviaClientNumberandClick(value){
 
-    cy.get(locator.clientnumber).each(($label) => {
-        cy.wrap($label).invoke('text').then((text) => {
-          if (text.trim()== 'Client Number') {
-            cy.wrap($label).parent().find('input').type(value,{ delay: 10});
-          }
-        });
-       
-
-      });
+   cy.contains('label', 'Client Number') // find the label by its text
+  .parent() // get the parent element that contains both the label and input
+  .find('input') // find the input field within that parent
+  .type(value,{ delay: 10});; // example: type a value in the input field
       cy.log("I am executing afterwated ")
       cy.get(locator.tabledata).should('have.text',value).prev('td').click();
       cy.contains('span', 'Apply').click();
@@ -46,3 +41,4 @@ searchviaClientNumberandClick(value){
 };
 
 export const client = new ClientPage();
+

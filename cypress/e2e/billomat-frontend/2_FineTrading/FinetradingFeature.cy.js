@@ -51,7 +51,7 @@ describe('Framework Test Suite', () => {
 
 	
 qase(15,
-	it(`BF-15:  Upload of Invoice from document Inbox`, () => {
+	it(`BF-15: Upload of Invoice from document Inbox`, () => {
 		
 			
 		commonitem.selectmenuitem('inboxdocuments');
