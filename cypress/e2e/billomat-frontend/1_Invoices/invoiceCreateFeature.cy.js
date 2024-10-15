@@ -25,6 +25,7 @@ const testConfig = {
   invoiceStatus: {
     draft: 'Draft',
     paid: 'Paid',
+    open: 'Open'
   },
   logoutUrl: '/app/auth/logout',
 };
@@ -79,15 +80,22 @@ describe('Framework Test Suite', () => {
       invoice.description(
         testData.invoice[testConfig.invoiceDetails.descriptionKey],
       );
+      invoice.fillPositionDetails(1, 'Test Title 1', 'Test Description 1', '10', '119', '19% 19', '1,000.00 €', '1,190.00 €');
+
       invoice.clickactionbutton(testConfig.invoiceActions.saveButton);
       invoice.verifyStatus(testConfig.invoiceStatus.draft);
       invoice.clickactionItem(testConfig.invoiceActions.completeButton);
       invoice.clickactionItem(testConfig.invoiceActions.approveButton);
-      invoice.verifyStatus(testConfig.invoiceStatus.paid);
+      invoice.verifyStatus(testConfig.invoiceStatus.open);
     }),
+
+
   );
 
   afterEach('logout', () => {
     login.navigateToUrl(testConfig.logoutUrl);
   });
+
+ 
+
 });

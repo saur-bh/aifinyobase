@@ -82,5 +82,40 @@ class InvoicePage extends BasePage {
   verifyInvoiceNumber(num) {
     cy.get(locator.invoicenum).should('be.visible').and('have.text', num);
   }
+
+    // Helper function to fill in details for each position
+ fillPositionDetails(positionIndex, title, description, quantity, price, taxRate, expectedNet, expectedGross) {
+        // Locate the parent container based on position index
+        cy.contains('.position-index', `#${positionIndex}`).parents('.position-viewable').within(() => {
+          
+          // Step 1: Fill the Title field (using placeholder)
+          cy.get('input[placeholder="Title"]').type(title);
+    
+          // Step 2: Fill the Description field (using placeholder)
+          cy.get('textarea[placeholder="Description"]').type(description);
+    
+          // Step 3: Fill the Quantity field (by input ID 'positionQuantity')
+          cy.get('#positionQuantity').type(quantity);
+    
+          // Step 4: Fill the Price field (using placeholder)
+          cy.get('input[placeholder="Price"]').type(price);
+    
+          // Step 5: Select the Tax option (class selector for 'position-tax' with the given tax rate)
+          cy.get('.position-tax .ui-select__single-value').click();  // Click the dropdown
+          cy.contains(`${taxRate}`).click();  // Select the desired tax rate (e.g., '19% 19')
+    
+          // Step 6: Read the Net value (class 'position-net-gross-price-net-value') and store it in a variable
+          cy.get('.position-net-gross-price-net').invoke('text').as(`netValue${positionIndex}`);
+    
+          // Step 7: Read the Gross value (class 'position-net-gross-price-gross') and store it in a variable
+          cy.get('.position-net-gross-price-gross').invoke('text').as(`grossValue${positionIndex}`);
+    
+         // Step 8: Assert that the Net value contains the expected value
+cy.get(`@netValue${positionIndex}`).should('contain', expectedNet);
+    
+          // Step 9: Assert the Gross value contains the expected value
+          cy.get(`@grossValue${positionIndex}`).should('contain', expectedGross);
+        });
+      }
 }
 export const invoice = new InvoicePage();
