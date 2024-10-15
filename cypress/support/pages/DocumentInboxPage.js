@@ -1,6 +1,6 @@
-import BasePage from "./BasePage";
+import BasePage from './BasePage';
 
-const locator = require("../locators/billomat-frontend/documentInboxPage.json");
+const locator = require('../locators/billomat-frontend/documentInboxPage.json');
 /**
  * Class representing a Navigation bar menu item and its action.
  * @extends BasePage
@@ -25,8 +25,8 @@ class DocumentInboxPage extends BasePage {
    */
   fileUploadCancel(filePath) {
     cy.get(locator.uploadfile)
-      .find("button", { timeout: 10000 })
-      .should("have.value", "Cancel")
+      .find('button', { timeout: 10000 })
+      .should('have.value', 'Cancel')
       .click();
   }
 

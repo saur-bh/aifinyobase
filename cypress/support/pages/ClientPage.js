@@ -1,5 +1,5 @@
-import BasePage from "./BasePage";
-const locator = require("../locators/billomat-frontend/clientPage");
+import BasePage from './BasePage';
+const locator = require('../locators/billomat-frontend/clientPage');
 
 /**
  * Class representing a Clients.
@@ -25,13 +25,13 @@ class ClientPage extends BasePage {
   }
 
   searchviaClientNumberandClick(value) {
-    cy.contains("label", "Client Number") // find the label by its text
+    cy.contains('label', 'Client Number') // find the label by its text
       .parent() // get the parent element that contains both the label and input
-      .find("input") // find the input field within that parent
+      .find('input') // find the input field within that parent
       .type(value, { delay: 10 }); // example: type a value in the input field
-    cy.log("I am executing afterwated ");
-    cy.get(locator.tabledata).should("have.text", value).prev("td").click();
-    cy.contains("span", "Apply").click();
+    cy.log('I am executing afterwated ');
+    cy.get(locator.tabledata).should('have.text', value).prev('td').click();
+    cy.contains('span', 'Apply').click();
   }
 }
 

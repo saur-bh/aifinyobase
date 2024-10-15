@@ -28,7 +28,7 @@ class BasePage {
    * @example
    * BasePage.setMobileViewport("iPhone-x");
    */
-  setMobileViewport(viewPort = "iPhone-x") {
+  setMobileViewport(viewPort = 'iPhone-x') {
     cy.viewport(viewPort);
   }
 
@@ -41,7 +41,7 @@ class BasePage {
   navigateToUrl(visitUrl) {
     cy.visit(visitUrl, {
       onBeforeLoad(win) {
-        win.localStorage.setItem("i18nextLng", "en-GB");
+        win.localStorage.setItem('i18nextLng', 'en-GB');
       },
     });
   }
@@ -62,7 +62,7 @@ class BasePage {
    * BasePage.verifyTitleOfPage('pflegia');
    */
   verifyTitleOfPage(title) {
-    cy.title().should("include", title);
+    cy.title().should('include', title);
   }
 }
 

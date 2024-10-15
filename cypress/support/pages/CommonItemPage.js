@@ -1,4 +1,4 @@
-import BasePage from "./BasePage";
+import BasePage from './BasePage';
 
 /**
  * Class representing a Navigation bar menu item and its action.
@@ -13,7 +13,7 @@ class CommonItemPage extends BasePage {
    * commonItem.selectmenuitem('invoices');
    */
   selectmenuitem(item) {
-    cy.get(`[href="/app/beta/${item}"]`).should("be.visible").click();
+    cy.get(`[href="/app/beta/${item}"]`).should('be.visible').click();
   }
 
   /**
@@ -24,17 +24,17 @@ class CommonItemPage extends BasePage {
    */
   clickshortcutItem(shortcutItem) {
     switch (shortcutItem) {
-      case "Neue Rechnung":
-      case "New Invoice":
-        cy.get(".invoices").find("button").first().click();
+      case 'Neue Rechnung':
+      case 'New Invoice':
+        cy.get('.invoices').find('button').first().click();
         break;
-      case "Neue Abo-Rechnung":
-      case "Recurring Invoices":
-        cy.get(".recurrings").find("button").first().click();
+      case 'Neue Abo-Rechnung':
+      case 'Recurring Invoices':
+        cy.get('.recurrings').find('button').first().click();
         break;
-      case "Lieferantenrechnung":
-      case "supplierinvoice":
-        cy.get(".finance").find("button").first().click();
+      case 'Lieferantenrechnung':
+      case 'supplierinvoice':
+        cy.get('.finance').find('button').first().click();
         break;
 
       default:

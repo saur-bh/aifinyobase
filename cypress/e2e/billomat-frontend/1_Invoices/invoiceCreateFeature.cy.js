@@ -1,7 +1,7 @@
-import { login } from "../../../support/pages/LoginPage";
-import { commonitem } from "../../../support/pages/CommonItemPage";
-import { client } from "../../../support/pages/ClientPage";
-import { invoice } from "../../../support/pages/InvoicePage";
+import { login } from '../../../support/pages/LoginPage';
+import { commonitem } from '../../../support/pages/CommonItemPage';
+import { client } from '../../../support/pages/ClientPage';
+import { invoice } from '../../../support/pages/InvoicePage';
 import { qase } from 'cypress-qase-reporter/dist/mocha';
 
 const testConfig = {
@@ -47,31 +47,45 @@ describe('Framework Test Suite', () => {
     }
   });
 
-  qase(8, it(`Should be able to cancel new invoice creation with existing client `, () => {
-    commonitem.selectmenuitem(testConfig.navigation.invoicesMenuItem);
-    commonitem.clickshortcutItem(testConfig.navigation.newInvoiceShortcut);
+  qase(
+    8,
+    it(`Should be able to cancel new invoice creation with existing client `, () => {
+      commonitem.selectmenuitem(testConfig.navigation.invoicesMenuItem);
+      commonitem.clickshortcutItem(testConfig.navigation.newInvoiceShortcut);
 
-    client.searchviaClientNumberandClick(testData.client[testConfig.clientSearch.searchKey]);
-    invoice.description(testData.invoice[testConfig.invoiceDetails.descriptionKey]);
-    invoice.clickactionbutton(testConfig.invoiceActions.saveButton);
-    invoice.verifyStatus(testConfig.invoiceStatus.draft);
-    invoice.clickactionItem(testConfig.invoiceActions.completeButton);
-    invoice.clickactionItem(testConfig.invoiceActions.approveButton);
-    invoice.verifyStatus(testConfig.invoiceStatus.paid);
-  }));
+      client.searchviaClientNumberandClick(
+        testData.client[testConfig.clientSearch.searchKey],
+      );
+      invoice.description(
+        testData.invoice[testConfig.invoiceDetails.descriptionKey],
+      );
+      invoice.clickactionbutton(testConfig.invoiceActions.saveButton);
+      invoice.verifyStatus(testConfig.invoiceStatus.draft);
+      invoice.clickactionItem(testConfig.invoiceActions.completeButton);
+      invoice.clickactionItem(testConfig.invoiceActions.approveButton);
+      invoice.verifyStatus(testConfig.invoiceStatus.paid);
+    }),
+  );
 
-  qase(7, it(`Should be able to create new invoice with existing client`, () => {
-    commonitem.selectmenuitem(testConfig.navigation.invoicesMenuItem);
-    commonitem.clickshortcutItem(testConfig.navigation.newInvoiceShortcut);
+  qase(
+    7,
+    it(`Should be able to create new invoice with existing client`, () => {
+      commonitem.selectmenuitem(testConfig.navigation.invoicesMenuItem);
+      commonitem.clickshortcutItem(testConfig.navigation.newInvoiceShortcut);
 
-    client.searchviaClientNumberandClick(testData.client[testConfig.clientSearch.searchKey]);
-    invoice.description(testData.invoice[testConfig.invoiceDetails.descriptionKey]);
-    invoice.clickactionbutton(testConfig.invoiceActions.saveButton);
-    invoice.verifyStatus(testConfig.invoiceStatus.draft);
-    invoice.clickactionItem(testConfig.invoiceActions.completeButton);
-    invoice.clickactionItem(testConfig.invoiceActions.approveButton);
-    invoice.verifyStatus(testConfig.invoiceStatus.paid);
-  }));
+      client.searchviaClientNumberandClick(
+        testData.client[testConfig.clientSearch.searchKey],
+      );
+      invoice.description(
+        testData.invoice[testConfig.invoiceDetails.descriptionKey],
+      );
+      invoice.clickactionbutton(testConfig.invoiceActions.saveButton);
+      invoice.verifyStatus(testConfig.invoiceStatus.draft);
+      invoice.clickactionItem(testConfig.invoiceActions.completeButton);
+      invoice.clickactionItem(testConfig.invoiceActions.approveButton);
+      invoice.verifyStatus(testConfig.invoiceStatus.paid);
+    }),
+  );
 
   afterEach('logout', () => {
     login.navigateToUrl(testConfig.logoutUrl);

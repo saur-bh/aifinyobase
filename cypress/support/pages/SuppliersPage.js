@@ -1,5 +1,5 @@
-import BasePage from "./BasePage";
-const locator = require("../locators/billomat-frontend/supplierPage");
+import BasePage from './BasePage';
+const locator = require('../locators/billomat-frontend/supplierPage');
 
 /**
  * Class representing a Navigation bar menu item and its action.
@@ -15,7 +15,7 @@ class SuppliersPage extends BasePage {
    */
   searchsupplierandClick(value) {
     cy.get(locator.city).type(value, { delay: 1000 });
-    cy.get(locator.tabledata).last().should("have.text", value).click();
+    cy.get(locator.tabledata).last().should('have.text', value).click();
   }
 
   /**
@@ -41,8 +41,8 @@ class SuppliersPage extends BasePage {
   verifySupplierName(text) {
     cy.get(locator.companyname)
       .first()
-      .should("be.visible")
-      .and("have.value", text);
+      .should('be.visible')
+      .and('have.value', text);
   }
 }
 

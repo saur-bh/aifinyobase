@@ -7,12 +7,16 @@
     "cy:open": "cypress open --e2e",
     "cy:run": "cypress run",
     "cy:open:stg": "APP_ID='stagqa' APP_SYS='billodev' npm run cy:open",
+    "format": "prettier --write \"**/*.js\"",
     "cy:open:prod": "APP_ID='prodqa' APP_SYS='billomat' npm run cy:open",
     "cy:run:qase:stg": "QASE_REPORT=1 APP_ID='stagqa' APP_SYS='billodev' npm run cy:run --spec 'cypress/e2e/billomat-frontend/1_Invoices/**/*'",
     "cy:run:qase:prod": "QASE_REPORT=1 APP_ID='prodqa' APP_SYS='billomat' npm run cy:run --spec 'cypress/e2e/billomat-frontend/1_Invoices/**/*'",
     "cy:open:fintrading": "APP_ID='k20270727' APP_SYS='billomat' npm run cy:open 'cypress/e2e/billomat-frontend/2_FineTrading/**/*'"
   },
-  "keywords": ["automation", "cypress"],
+  "keywords": [
+    "automation",
+    "cypress"
+  ],
   "author": "Saurabh Verma",
   "license": "ISC",
   "devDependencies": {
@@ -24,7 +28,8 @@
     "eslint": "^8.10.0",
     "eslint-plugin-mocha": "10.0.3",
     "husky": "7.0.4",
-    "lint-staged": "12.3.5"
+    "lint-staged": "12.3.5",
+    "prettier": "^3.3.3"
   },
   "dependencies": {
     "cypress-multi-reporters": "^1.6.4"
