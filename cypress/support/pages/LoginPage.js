@@ -1,5 +1,5 @@
 // loginPage.js
-import BasePage from './BasePage';
+import BasePage from "./BasePage";
 
 /**
  * Class representing a Login page.
@@ -15,7 +15,7 @@ class LoginPage extends BasePage {
      * Locator for the email field.
      * @type {string}
      */
-    emailField: '#emailField',
+    emailField: "#emailField",
     /**
      * Locator for the password field.
      * @type {string}
@@ -25,7 +25,7 @@ class LoginPage extends BasePage {
      * Locator for the login button.
      * @type {string}
      */
-    loginButton: '#loginFormButton > span',
+    loginButton: "#loginFormButton > span",
   };
 
   /**

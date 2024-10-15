@@ -24,30 +24,28 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import { login } from "../support/pages/LoginPage";
-Cypress.on('uncaught:exception', (err, runnable) => {
+Cypress.on("uncaught:exception", (err, runnable) => {
   // we expect a 3rd party library error with message 'list not defined'
   // and don't want to fail the test so we return false
-  if (err.message.includes('handleLogin')) {
-    return false
+  if (err.message.includes("handleLogin")) {
+    return false;
   }
-  if (err.message.includes('ServiceWorker')) {
-    return false
+  if (err.message.includes("ServiceWorker")) {
+    return false;
   }
   // we still want to ensure there are no other unexpected
   // errors, so we let them fail the test
-})
+});
 
+Cypress.Commands.add("loginToApp", () => {
+  login.navigateToUrl(`/app`);
+  login.email(Cypress.env("username"));
+  login.password(Cypress.env("password"));
+  login.clickLoginBtn();
+});
 
-Cypress.Commands.add('loginToApp', () => { 
-    login.navigateToUrl(`/app`);
-		login.email(Cypress.env('username'));
-		login.password(Cypress.env('password'));
-		login.clickLoginBtn();
- })
-
-
- Cypress.on("log:changed", (log, interactive) => {
-  if (log.displayName !== "fetch" && log.displayName !== "xhr") return
+Cypress.on("log:changed", (log, interactive) => {
+  if (log.displayName !== "fetch" && log.displayName !== "xhr") return;
 
   const logs = window.top.document.querySelectorAll("li.command-name-request");
   if (logs.length) {
@@ -58,10 +56,10 @@ Cypress.Commands.add('loginToApp', () => {
 
 // cypress/support/commands.js
 
-Cypress.Commands.add('tab', { prevSubject: 'optional' }, (subject, options) => {
-  const tabEvent = new KeyboardEvent('keydown', {
-    key: 'Tab',
-    code: 'Tab',
+Cypress.Commands.add("tab", { prevSubject: "optional" }, (subject, options) => {
+  const tabEvent = new KeyboardEvent("keydown", {
+    key: "Tab",
+    code: "Tab",
     which: 9,
     bubbles: true,
     composed: true,
