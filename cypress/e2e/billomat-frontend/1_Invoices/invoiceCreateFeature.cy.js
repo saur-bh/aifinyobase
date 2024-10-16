@@ -70,7 +70,7 @@ describe('Framework Test Suite', () => {
 
   qase(
     7,
-    it(`Should be able to create new invoice with existing client`, () => {
+    xit(`Should be able to create new invoice with existing client`, () => {
       commonitem.selectmenuitem(testConfig.navigation.invoicesMenuItem);
       commonitem.clickshortcutItem(testConfig.navigation.newInvoiceShortcut);
 

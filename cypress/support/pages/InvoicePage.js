@@ -23,11 +23,20 @@ class InvoicePage extends BasePage {
   }
 
   clickactionbutton(item) {
-    if ('Abbrechen' || 'Cancel') {
-      cy.contains(item).click();
+    let buttonText;
+
+    // Handle cases based on item passed
+    if (item === 'Save' || item === 'Speichern') {
+      buttonText = /Save|Speichern/;
+    } else if (item === 'Cancel' || item === 'Abbrechen') {
+      buttonText = /Cancel|Abbrechen/;
     }
-    if ('Save' | 'Speichern') {
-      cy.contains(item).click();
+  
+    // Use cy.contains() to find and click the button with the matching text
+    if (buttonText) {
+      cy.contains(buttonText).click();
+    } else {
+      throw new Error('Unsupported button text passed: ' + item);
     }
   }
 

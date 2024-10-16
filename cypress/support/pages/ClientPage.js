@@ -21,17 +21,18 @@ class ClientPage extends BasePage {
    */
 
   description(text) {
-    cy.get(locator.description).type(text, { delay: 100 });
+    cy.get("td[data-label='Client Number'], td[data-label='Kunden-Nr']").type(text, { delay: 100 });
   }
 
   searchviaClientNumberandClick(value) {
-    cy.contains('label', 'Client Number') // find the label by its text
+    cy.contains('label', /Client Number|Kunden-Nr/) // find the label by its text
       .parent() // get the parent element that contains both the label and input
       .find('input') // find the input field within that parent
       .type(value, { delay: 10 }); // example: type a value in the input field
     cy.log('I am executing afterwated ');
-    cy.get(locator.tabledata).should('have.text', value).prev('td').click();
-    cy.contains('span', 'Apply').click();
+    cy.get("td[data-label='Client Number'], td[data-label='Kunden-Nr']").should('have.text', value).prev('td').click();
+    cy.contains('span', /Apply|Übernehmen/).should('exist').click();
+    
   }
 }
 

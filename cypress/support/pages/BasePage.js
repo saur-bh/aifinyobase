@@ -41,7 +41,7 @@ class BasePage {
   navigateToUrl(visitUrl) {
     cy.visit(visitUrl, {
       onBeforeLoad(win) {
-        win.localStorage.setItem('i18nextLng', 'en-GB');
+        win.localStorage.setItem('i18nextLng', 'de-DE');
       },
     });
   }
