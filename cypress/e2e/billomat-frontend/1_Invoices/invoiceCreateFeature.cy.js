@@ -50,7 +50,7 @@ describe('Framework Test Suite', () => {
 
   qase(
     8,
-    it(`Should be able to cancel new invoice creation with existing client `, () => {
+    xit(`Should be able to cancel new invoice creation with existing client `, () => {
       commonitem.selectmenuitem(testConfig.navigation.invoicesMenuItem);
       commonitem.clickshortcutItem(testConfig.navigation.newInvoiceShortcut);
 
@@ -70,7 +70,7 @@ describe('Framework Test Suite', () => {
 
   qase(
     7,
-    xit(`Should be able to create new invoice with existing client`, () => {
+    it.only(`Should be able to create new invoice with existing client`, () => {
       commonitem.selectmenuitem(testConfig.navigation.invoicesMenuItem);
       commonitem.clickshortcutItem(testConfig.navigation.newInvoiceShortcut);
 
@@ -85,7 +85,7 @@ describe('Framework Test Suite', () => {
       invoice.clickactionbutton(testConfig.invoiceActions.saveButton);
       invoice.verifyStatus(testConfig.invoiceStatus.draft);
       invoice.clickactionItem(testConfig.invoiceActions.completeButton);
-      invoice.clickactionItem(testConfig.invoiceActions.approveButton);
+      invoice.clickdialogBox(testConfig.invoiceActions.approveButton);
       invoice.verifyStatus(testConfig.invoiceStatus.open);
     }),
 

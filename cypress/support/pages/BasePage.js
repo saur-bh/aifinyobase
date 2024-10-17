@@ -21,17 +21,6 @@ class BasePage {
   logInfo(message) {
     cy.log(message);
   }
-
-  /**
-   * Set the viewport to a specific device size.
-   * @param {string} viewPort - can be "iPhone-x", "ipad-2", "macbook-13", or "macbook-15"
-   * @example
-   * BasePage.setMobileViewport("iPhone-x");
-   */
-  setMobileViewport(viewPort = 'iPhone-x') {
-    cy.viewport(viewPort);
-  }
-
   /**
    * Navigate to a URL.
    * @param {string} visitUrl - endpoint to visit (keep '/' for base URL)

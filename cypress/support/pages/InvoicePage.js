@@ -53,12 +53,20 @@ class InvoicePage extends BasePage {
         .invoke('text')
         .should('not.match', /Draft|Entwurf/)
         .and('match', /Paid|Bezahlt/);
-    } else {
+    } ;
+    if(status == 'Draft' || status === 'Entwurf') {
       cy.get('.sidebar-box.state', { timeout: 20000 })
         .find('p', { timeout: 10000 })
         .invoke('text')
         .should('match', /Draft|Entwurf/);
-    }
+    };
+    if(status == 'Open' || status === 'Offen') {
+      cy.get('.sidebar-box.state', { timeout: 20000 })
+        .find('p', { timeout: 10000 })
+        .invoke('text')
+        .should('match', /Open|Offen/);
+    };
+
   }
 
   /**
@@ -113,40 +121,50 @@ class InvoicePage extends BasePage {
       .within(() => {
         // Step 1: Fill the Title field (using placeholder)
         cy.get('input[placeholder="Title"], input[placeholder="Titel"]').type(title);
-
+  
         // Step 2: Fill the Description field (using placeholder)
         cy.get('textarea[placeholder="Description"],textarea[placeholder="Beschreibung"]').type(description);
-
+  
         // Step 3: Fill the Quantity field (by input ID 'positionQuantity')
         cy.get('#positionQuantity').type(quantity);
-
+  
         // Step 4: Fill the Price field (using placeholder)
         cy.get('input[placeholder="Price"],input[placeholder="Preis"]').type(price);
-
+  
         // Step 5: Select the Tax option (class selector for 'position-tax' with the given tax rate)
         cy.get('.position-tax .ui-select__single-value').click(); // Click the dropdown
         cy.contains(`${taxRate}`).click(); // Select the desired tax rate (e.g., '19% 19')
-
+  
         // Step 6: Read the Net value (class 'position-net-gross-price-net-value') and store it in a variable
         cy.get('.position-net-gross-price-net')
           .invoke('text')
           .as(`netValue${positionIndex}`);
-
+  
         // Step 7: Read the Gross value (class 'position-net-gross-price-gross') and store it in a variable
         cy.get('.position-net-gross-price-gross')
           .invoke('text')
           .as(`grossValue${positionIndex}`);
-          cy.log("MY VALI ",this.convertToDEFormat("1,000.00 €"));
-        // Step 8: Assert that the Net value contains the expected value
-        cy.get(`@netValue${positionIndex}`).should('contain', expectedNet);
-       
-
-        // Step 9: Assert the Gross value contains the expected value
-        cy.get(`@grossValue${positionIndex}`).should('contain', expectedGross);
-        
+  
+        // Step 8: Access the localStorage and modify the expected values accordingly
+        cy.window().then((win) => {
+          const browservalue = win.localStorage.getItem('i18nextLng');
+          if (browservalue === 'de-DE') {
+            // Update the expected values if the language is German
+            expectedNet = this.convertToDEFormat(expectedNet);
+            expectedGross = this.convertToDEFormat(expectedGross);
+          }
+  
+          // Log the updated values after modification
+          cy.log("MY VALI: " + expectedGross);
+  
+          // Step 9: Assert that the Net value contains the expected value
+          cy.get(`@netValue${positionIndex}`).should('contain', expectedNet);
+  
+          // Step 10: Assert the Gross value contains the expected value
+          cy.get(`@grossValue${positionIndex}`).should('contain', expectedGross);
+        });
       });
-  }
-
+  };
    convertToDEFormat(value) {
     // Remove euro sign and any spaces
     value = value.replace('€', '').trim();
