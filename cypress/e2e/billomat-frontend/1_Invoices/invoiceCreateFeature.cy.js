@@ -63,7 +63,7 @@ describe('Framework Test Suite', () => {
       invoice.clickactionbutton(testConfig.invoiceActions.saveButton);
       invoice.verifyStatus(testConfig.invoiceStatus.draft);
       invoice.clickactionItem(testConfig.invoiceActions.completeButton);
-      invoice.clickactionItem(testConfig.invoiceActions.approveButton);
+      invoice.clickdialogBox(testConfig.invoiceActions.approveButton);
       invoice.verifyStatus(testConfig.invoiceStatus.paid);
     }),
   );

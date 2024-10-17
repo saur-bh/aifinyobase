@@ -31,7 +31,7 @@ class InvoicePage extends BasePage {
     } else if (item === 'Cancel' || item === 'Abbrechen') {
       buttonText = /Cancel|Abbrechen/;
     }
-  
+
     // Use cy.contains() to find and click the button with the matching text
     if (buttonText) {
       cy.contains(buttonText).click();
@@ -47,15 +47,17 @@ class InvoicePage extends BasePage {
    * invoice.verifyStatus('Draft');
    */
   verifyStatus(status) {
-    if (status == 'Paid') {
+    if (status == 'Paid' || status === 'Bezahlt') {
       cy.get('.sidebar-box.state', { timeout: 20000 })
         .find('p', { timeout: 10000 })
-        .should('not.have.text', 'Draft')
-        .and('have.text', status);
+        .invoke('text')
+        .should('not.match', /Draft|Entwurf/)
+        .and('match', /Paid|Bezahlt/);
     } else {
       cy.get('.sidebar-box.state', { timeout: 20000 })
         .find('p', { timeout: 10000 })
-        .should('have.text', status);
+        .invoke('text')
+        .should('match', /Draft|Entwurf/);
     }
   }
 
@@ -67,22 +69,24 @@ class InvoicePage extends BasePage {
    */
 
   clickactionItem(action) {
-    cy.get('.sidebar-box.confirmation--box', { timeout: 30000 }).should(
-      'be.visible',
-    );
-    switch (action) {
-      case 'Abschließen':
-      case 'Complete':
-        cy.contains(action).click();
-        break;
-      case 'Zustimmen':
-      case 'Approve':
-        cy.contains(action).click();
-        break;
-      case 'Cancel':
-        cy.contains(action).click();
-        break;
+    cy.get('.sidebar-box.confirmation--box', { timeout: 30000 })
+      .should('be.visible')
+      .contains(/complete|abschließen|Zustimmen|Approve|Cancel|Abbrechen/i)
+      .click();
+  }
+
+  clickdialogBox(item) {
+    if(item === 'Approve' || item === 'Zustimmen'){
+      cy.get('.ui-dialog.ui-dialog--medium.ui-dialog--open')
+      .contains(/Approve|Zustimmen/i)
+      .click();
     }
+    if(item === 'Abbrechen' || item === 'Cancel'){
+      cy.get('.ui-dialog.ui-dialog--medium.ui-dialog--open')
+      .contains(/Abbrechen|Cancel/i)
+      .click();
+    }
+   
   }
 
   /**
@@ -92,39 +96,71 @@ class InvoicePage extends BasePage {
     cy.get(locator.invoicenum).should('be.visible').and('have.text', num);
   }
 
-    // Helper function to fill in details for each position
- fillPositionDetails(positionIndex, title, description, quantity, price, taxRate, expectedNet, expectedGross) {
-        // Locate the parent container based on position index
-        cy.contains('.position-index', `#${positionIndex}`).parents('.position-viewable').within(() => {
-          
-          // Step 1: Fill the Title field (using placeholder)
-          cy.get('input[placeholder="Title"]').type(title);
+  // Helper function to fill in details for each position
+  fillPositionDetails(
+    positionIndex,
+    title,
+    description,
+    quantity,
+    price,
+    taxRate,
+    expectedNet,
+    expectedGross,
+  ) {
+    // Locate the parent container based on position index
+    cy.contains('.position-index', `#${positionIndex}`)
+      .parents('.position-viewable')
+      .within(() => {
+        // Step 1: Fill the Title field (using placeholder)
+        cy.get('input[placeholder="Title"], input[placeholder="Titel"]').type(title);
+
+        // Step 2: Fill the Description field (using placeholder)
+        cy.get('textarea[placeholder="Description"],textarea[placeholder="Beschreibung"]').type(description);
+
+        // Step 3: Fill the Quantity field (by input ID 'positionQuantity')
+        cy.get('#positionQuantity').type(quantity);
+
+        // Step 4: Fill the Price field (using placeholder)
+        cy.get('input[placeholder="Price"],input[placeholder="Preis"]').type(price);
+
+        // Step 5: Select the Tax option (class selector for 'position-tax' with the given tax rate)
+        cy.get('.position-tax .ui-select__single-value').click(); // Click the dropdown
+        cy.contains(`${taxRate}`).click(); // Select the desired tax rate (e.g., '19% 19')
+
+        // Step 6: Read the Net value (class 'position-net-gross-price-net-value') and store it in a variable
+        cy.get('.position-net-gross-price-net')
+          .invoke('text')
+          .as(`netValue${positionIndex}`);
+
+        // Step 7: Read the Gross value (class 'position-net-gross-price-gross') and store it in a variable
+        cy.get('.position-net-gross-price-gross')
+          .invoke('text')
+          .as(`grossValue${positionIndex}`);
+          cy.log("MY VALI ",this.convertToDEFormat("1,000.00 €"));
+        // Step 8: Assert that the Net value contains the expected value
+        cy.get(`@netValue${positionIndex}`).should('contain', expectedNet);
+       
+
+        // Step 9: Assert the Gross value contains the expected value
+        cy.get(`@grossValue${positionIndex}`).should('contain', expectedGross);
+        
+      });
+  }
+
+   convertToDEFormat(value) {
+    // Remove euro sign and any spaces
+    value = value.replace('€', '').trim();
     
-          // Step 2: Fill the Description field (using placeholder)
-          cy.get('textarea[placeholder="Description"]').type(description);
+    // Replace comma with a temporary character to avoid confusion
+    value = value.replace(',', 'TEMP');
     
-          // Step 3: Fill the Quantity field (by input ID 'positionQuantity')
-          cy.get('#positionQuantity').type(quantity);
+    // Replace the decimal dot with a comma (for DE format)
+    value = value.replace('.', ',');
     
-          // Step 4: Fill the Price field (using placeholder)
-          cy.get('input[placeholder="Price"]').type(price);
+    // Replace the temporary character (used for thousand separator) with a dot
+    value = value.replace('TEMP', '.');
     
-          // Step 5: Select the Tax option (class selector for 'position-tax' with the given tax rate)
-          cy.get('.position-tax .ui-select__single-value').click();  // Click the dropdown
-          cy.contains(`${taxRate}`).click();  // Select the desired tax rate (e.g., '19% 19')
-    
-          // Step 6: Read the Net value (class 'position-net-gross-price-net-value') and store it in a variable
-          cy.get('.position-net-gross-price-net').invoke('text').as(`netValue${positionIndex}`);
-    
-          // Step 7: Read the Gross value (class 'position-net-gross-price-gross') and store it in a variable
-          cy.get('.position-net-gross-price-gross').invoke('text').as(`grossValue${positionIndex}`);
-    
-         // Step 8: Assert that the Net value contains the expected value
-cy.get(`@netValue${positionIndex}`).should('contain', expectedNet);
-    
-          // Step 9: Assert the Gross value contains the expected value
-          cy.get(`@grossValue${positionIndex}`).should('contain', expectedGross);
-        });
-      }
+    return value;
+  }
 }
 export const invoice = new InvoicePage();

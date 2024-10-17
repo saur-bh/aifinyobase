@@ -36,7 +36,7 @@ class BasePage {
    * Navigate to a URL.
    * @param {string} visitUrl - endpoint to visit (keep '/' for base URL)
    * @example
-   * BasePage.navigateToUrl("/");
+   * BasePage.navigateToUrl("/");en-GBde-DE
    */
   navigateToUrl(visitUrl) {
     cy.visit(visitUrl, {

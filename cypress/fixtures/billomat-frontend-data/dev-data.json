@@ -1,16 +1,9 @@
 {   
-    "login" : 
-    {
-    "URL": "stagqa",
-    "email": "saurabh.verma@aifinyo.de",
-    "password": "welcome123"
-    },
-    
     "client" : {
 
       "clientNumber" :"QA-Automation1234",
       "company" : " ",
-      "email" : "compay" ,
+      "email" : "company" ,
       "firtname" : "SomeName",
       "lastname" : "some name"
 
@@ -19,7 +12,7 @@
 
     "invoice" : {
 
-       "description" : "This Test Invoice description is from Automation. "
+       "description" : "This Test Invoice using automation ßüäöÖÄÜ §$%&/()=?' 1234567890"
 
     },
 
