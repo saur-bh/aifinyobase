@@ -31,7 +31,7 @@ class ClientPage extends BasePage {
       .type(value, { delay: 10 }); // example: type a value in the input field
     cy.log('I am executing afterwated ');
     cy.get("td[data-label='Client Number'], td[data-label='Kunden-Nr']").should('have.text', value).prev('td').click();
-    cy.contains('span', /Apply|Übernehmen/).should('exist').click();
+    cy.contains('button',/Apply|Übernehmen/).should('exist').click();
     
   }
 }
