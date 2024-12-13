@@ -8,6 +8,5 @@
       ]
     },
     "include": [
-      "**/*.cy.js"
-, "cypress/e2e/billomat-frontend/1_Invoices/invoiceCreateFeature.cy.js"    ]
+      "**/*.cy.js"    ]
 }

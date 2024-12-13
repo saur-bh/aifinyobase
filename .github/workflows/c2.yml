@@ -24,4 +24,4 @@ jobs:
         with:
             record: false
             headed: true
-            spec: cypress/e2e/billomat-frontend/2_FineTrading/**/*
+            spec: cypress/e2e/billomat-frontend/1_Invoices/**/*

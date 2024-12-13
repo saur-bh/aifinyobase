@@ -6,7 +6,7 @@
   "scripts": {
     "cy:open": "cypress open --e2e",
     "cy:run": "cypress run",
-    "cy:open:stg": "APP_ID='stagqa' APP_SYS='billodev' npm run cy:open",
+    "cy:open:stg": "npm run cy:open",
     "format": "prettier --write \"**/*.js\"",
     "cy:open:prod": "APP_ID='prodqa' APP_SYS='billomat' npm run cy:open",
     "cy:run:qase:stg": "QASE_REPORT=1 APP_ID='stagqa' APP_SYS='billodev' npm run cy:run --spec 'cypress/e2e/billomat-frontend/1_Invoices/**/*'",

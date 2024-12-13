@@ -37,8 +37,8 @@ module.exports = defineConfig({
   },
   e2e: {
     setupNodeEvents(on, config) {
-      const billomatid = process.env.APP_ID;
-      const system = process.env.APP_SYS;
+      const billomatid = process.env.APP_ID || 'stagqa';
+      const system = process.env.APP_SYS|| 'billodev';
       on('before:run', async (details) => {
         console.log('override before:run');
         await beforeRunHook(details);
